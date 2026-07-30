@@ -554,6 +554,22 @@ function formatDisplayDate(d) {
 // Track showMonths ourselves so we never touch fp.config (unreliable)
 let currentShowMonths = isMobile() ? 1 : 2;
 
+// Post-render fix: remove Flatpickr's inline style.width from the month
+// header element. Flatpickr writes this inline during init/re-render for
+// multi-month sizing — on mobile it creates a wide gap between month name
+// and year. Removing it lets our CSS flex rules centre them properly.
+function fixMobileMonthHeader() {
+  if (window.innerWidth >= 768) return; // desktop: leave Flatpickr's sizing alone
+  fpCalendarEl.querySelectorAll('.flatpickr-current-month').forEach(el => {
+    el.style.removeProperty('width');
+    // Also clear float/width on children Flatpickr may have set
+    const curMonth = el.querySelector('.cur-month');
+    const numWrap  = el.querySelector('.numInputWrapper');
+    if (curMonth) { curMonth.style.removeProperty('width'); curMonth.style.removeProperty('float'); }
+    if (numWrap)  { numWrap.style.removeProperty('width');  numWrap.style.removeProperty('float'); }
+  });
+}
+
 const fp = flatpickr(fpCalendarEl, {
   mode:          'range',
   inline:        true,
@@ -569,6 +585,12 @@ const fp = flatpickr(fpCalendarEl, {
         : [bookingState.arrival];
       fp.setDate(dates, false); // false = silent, don't fire onChange
     }
+    // After Flatpickr renders, clear the inline style.width it sets on
+    // .flatpickr-current-month so our CSS flex layout can take over on mobile.
+    // Flatpickr calculates this width for multi-month desktop layouts and
+    // writes it directly to element.style — JS is the only reliable way to
+    // remove it since inline styles beat even !important in some scenarios.
+    fixMobileMonthHeader();
   },
   onChange(selectedDates) {
     // Use native Date methods — fp.formatDate() does not exist on instances
@@ -597,6 +619,7 @@ window.addEventListener('resize', () => {
   if (currentShowMonths !== targetMonths) {
     currentShowMonths = targetMonths;
     fp.set('showMonths', targetMonths);
+    fixMobileMonthHeader();
     // Restore saved dates silently after re-render
     if (bookingState.arrival) {
       const dates = bookingState.departure
@@ -703,6 +726,7 @@ function openModal() {
   if (currentShowMonths !== targetMonths) {
     currentShowMonths = targetMonths;
     fp.set('showMonths', targetMonths);
+    fixMobileMonthHeader();
     if (bookingState.arrival) {
       const dates = bookingState.departure
         ? [bookingState.arrival, bookingState.departure]

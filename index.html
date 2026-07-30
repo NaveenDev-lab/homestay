@@ -1618,12 +1618,19 @@
   #booking-modal #fp-calendar .flatpickr-months {
     background: #1B4332 !important;
     padding: 0;
+    position: relative !important; /* ensures absolute-positioned arrows stay inside */
+    min-height: 52px !important;   /* enough room for 36px buttons + breathing space */
+    display: flex !important;
+    align-items: center !important;
   }
   #booking-modal #fp-calendar .flatpickr-month {
     background: #1B4332 !important;
     color: #fff !important;
     fill: #fff !important;
-    height: 40px;
+    height: 52px !important;       /* match .flatpickr-months min-height */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
   #booking-modal #fp-calendar .flatpickr-current-month {
     padding: 8px 0 0;
@@ -1647,23 +1654,52 @@
     color: #fff;
   }
 
-  /* Nav arrows */
+  /* Nav arrow buttons — bordered square style, pinned to outer edges
+     of .flatpickr-months (which has position:relative from Flatpickr).
+     NOTE: Flatpickr hides .flatpickr-prev-month via visibility:hidden
+     (not display:none) when the current month is the minDate month —
+     this is correct behaviour; the button exists in the DOM but is
+     intentionally suppressed. Navigating forward one month reveals it. */
   #booking-modal #fp-calendar .flatpickr-prev-month,
   #booking-modal #fp-calendar .flatpickr-next-month {
-    fill: #fff !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 36px !important;
+    height: 36px !important;
+    padding: 0 !important;
+    border: 1px solid rgba(27,67,50,0.35) !important;
+    border-radius: 5px !important;
+    background: transparent !important;
+    cursor: pointer !important;
+    transition: background 0.15s ease !important;
+    /* keep them inside the green header bar */
     color: #fff !important;
+    fill: #fff !important;
+  }
+  #booking-modal #fp-calendar .flatpickr-prev-month {
+    left: 8px !important;
+  }
+  #booking-modal #fp-calendar .flatpickr-next-month {
+    right: 8px !important;
   }
   #booking-modal #fp-calendar .flatpickr-prev-month svg,
   #booking-modal #fp-calendar .flatpickr-next-month svg {
     fill: #fff !important;
+    width: 14px !important;
+    height: 14px !important;
   }
   #booking-modal #fp-calendar .flatpickr-prev-month:hover,
   #booking-modal #fp-calendar .flatpickr-next-month:hover {
-    color: #C9A15A;
+    background: rgba(255,255,255,0.15) !important;
+    border-color: rgba(255,255,255,0.5) !important;
   }
   #booking-modal #fp-calendar .flatpickr-prev-month:hover svg,
   #booking-modal #fp-calendar .flatpickr-next-month:hover svg {
-    fill: #C9A15A !important;
+    fill: #fff !important;
   }
 
   /* Weekday labels row */
@@ -1731,25 +1767,29 @@
     }
   }
 
-  /* Mobile: fix month header so "July" and "2026" sit together centred,
-     not stretched apart by the inherited flex justify-content */
+  /* Mobile: fix month header so "July" and "2026" sit together centred.
+     Flatpickr sets style.width inline on .flatpickr-current-month and
+     uses float on its children — !important is required to beat those
+     inline styles. The JS fixMobileMonthHeader() call below reinforces
+     this by zeroing the inline width directly after render. */
   @media (max-width: 767px) {
     #booking-modal #fp-calendar .flatpickr-current-month {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 6px;
-      width: 100%;
-      padding: 6px 0 0;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 6px !important;
+      width: 100% !important;
+      padding: 6px 0 0 !important;
     }
     #booking-modal #fp-calendar .flatpickr-current-month .cur-month,
     #booking-modal #fp-calendar .flatpickr-current-month .numInputWrapper {
-      display: inline-flex;
-      float: none;
+      display: inline-flex !important;
+      float: none !important;
+      width: auto !important;
     }
     #booking-modal #fp-calendar .flatpickr-current-month input.cur-year {
-      width: 5ch;
-      text-align: left;
+      width: 5ch !important;
+      text-align: left !important;
     }
   }
 
