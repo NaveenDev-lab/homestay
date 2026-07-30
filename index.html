@@ -1731,6 +1731,28 @@
     }
   }
 
+  /* Mobile: fix month header so "July" and "2026" sit together centred,
+     not stretched apart by the inherited flex justify-content */
+  @media (max-width: 767px) {
+    #booking-modal #fp-calendar .flatpickr-current-month {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      width: 100%;
+      padding: 6px 0 0;
+    }
+    #booking-modal #fp-calendar .flatpickr-current-month .cur-month,
+    #booking-modal #fp-calendar .flatpickr-current-month .numInputWrapper {
+      display: inline-flex;
+      float: none;
+    }
+    #booking-modal #fp-calendar .flatpickr-current-month input.cur-year {
+      width: 5ch;
+      text-align: left;
+    }
+  }
+
   /* -------------------------------------------------------
      FIX: Force inline calendar to block flow (not float)
      so it never escapes the left column and overlaps right.

@@ -572,8 +572,10 @@ const fp = flatpickr(fpCalendarEl, {
   },
   onChange(selectedDates) {
     // Use native Date methods — fp.formatDate() does not exist on instances
-    const newArrival   = selectedDates[0] ? dateToISO(selectedDates[0])   : null;
-    const newDeparture = selectedDates[1] ? dateToISO(selectedDates[1])   : null;
+    const newArrival   = selectedDates[0] ? dateToISO(selectedDates[0]) : null;
+    // Only set departure when BOTH dates have been picked (length === 2)
+    // With only one date selected, departure stays null so box shows "—"
+    const newDeparture = selectedDates.length === 2 ? dateToISO(selectedDates[1]) : null;
 
     bookingState.arrival   = newArrival;
     bookingState.departure = newDeparture;
