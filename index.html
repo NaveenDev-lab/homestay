@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeevika Haven Homestay — Private Pool Villa in Kombanad, Ernakulam</title>
+<meta name="description" content="A private four-bedroom pool villa in Kombanad, Ernakulam. Entire property, private pool, campfire nights and Kerala breakfast — reserve your stay.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+<link rel="stylesheet" href="dist/output.css">
+</head>
+<body class="font-sans text-charcoal bg-ivory antialiased">
+
+  <!-- ============================================================
+       NAVBAR
+  ============================================================ -->
+  <header
+    id="navbar"
+    class="fixed top-0 left-0 w-full z-50 transition-all duration-300"
+  >
+    <nav
+      class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-16 md:h-20"
+      aria-label="Primary navigation"
+    >
+
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2.5 group" aria-label="Jeevika Haven — home">
+        <!-- 4-petal leaf/flower SVG (currentColor) -->
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 32 32"
+          class="w-8 h-8 navbar-logo-icon transition-colors duration-300"
+          aria-hidden="true"
+          fill="currentColor"
+        >
+          <!-- top petal -->
+          <path d="M16 15C16 15 13 9 16 3C19 9 16 15 16 15Z"/>
+          <!-- bottom petal -->
+          <path d="M16 17C16 17 19 23 16 29C13 23 16 17 16 17Z"/>
+          <!-- left petal -->
+          <path d="M15 16C15 16 9 19 3 16C9 13 15 16 15 16Z"/>
+          <!-- right petal -->
+          <path d="M17 16C17 16 23 13 29 16C23 19 17 16 17 16Z"/>
+          <!-- centre dot -->
+          <circle cx="16" cy="16" r="2"/>
+        </svg>
+        <span class="font-display text-xl leading-none navbar-logo-text transition-colors duration-300">
+          Jeevika <span class="text-gold">Haven</span>
+        </span>
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <ul class="flex items-center gap-7 list-none m-0 p-0">
+          <li><a href="#villa"      class="navbar-link nav-underline-link text-sm font-medium tracking-wide transition-colors duration-300">The Villa</a></li>
+          <li><a href="#amenities"  class="navbar-link nav-underline-link text-sm font-medium tracking-wide transition-colors duration-300">Amenities</a></li>
+          <li><a href="#gallery"    class="navbar-link nav-underline-link text-sm font-medium tracking-wide transition-colors duration-300">Gallery</a></li>
+          <li><a href="#nearby"     class="navbar-link nav-underline-link text-sm font-medium tracking-wide transition-colors duration-300">Nearby</a></li>
+          <li><a href="#contact"    class="navbar-link nav-underline-link text-sm font-medium tracking-wide transition-colors duration-300">Contact</a></li>
+        </ul>
+        <a
+          href="#contact"
+          class="ml-2 px-5 py-2.5 rounded-full bg-gold text-white text-sm font-semibold tracking-wide hover:bg-amber-600 transition-colors duration-200 whitespace-nowrap"
+        >
+          Reserve Your Stay
+        </a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button
+        id="menu-open"
+        class="md:hidden flex flex-col justify-center items-center gap-1.5 w-10 h-10 -mr-1 navbar-hamburger transition-colors duration-300"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="block w-6 h-0.5 bg-current transition-all duration-300"></span>
+        <span class="block w-6 h-0.5 bg-current transition-all duration-300"></span>
+        <span class="block w-4 h-0.5 bg-current transition-all duration-300 self-end"></span>
+      </button>
+    </nav>
+
+    <!-- Mobile full-screen overlay menu -->
+    <div
+      id="mobile-menu"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation menu"
+      class="fixed inset-0 bg-forest z-40 flex flex-col items-center justify-center
+             opacity-0 pointer-events-none transition-opacity duration-300"
+    >
+      <!-- Close button -->
+      <button
+        id="menu-close"
+        class="absolute top-5 right-6 text-white w-10 h-10 flex items-center justify-center"
+        aria-label="Close navigation menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="w-6 h-6" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <!-- Logo inside overlay -->
+      <div class="mb-10 flex items-center gap-2.5 text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-8 h-8" aria-hidden="true" fill="currentColor">
+          <path d="M16 15C16 15 13 9 16 3C19 9 16 15 16 15Z"/>
+          <path d="M16 17C16 17 19 23 16 29C13 23 16 17 16 17Z"/>
+          <path d="M15 16C15 16 9 19 3 16C9 13 15 16 15 16Z"/>
+          <path d="M17 16C17 16 23 13 29 16C23 19 17 16 17 16Z"/>
+          <circle cx="16" cy="16" r="2"/>
+        </svg>
+        <span class="font-display text-xl leading-none">Jeevika <span class="text-gold">Haven</span></span>
+      </div>
+
+      <ul class="flex flex-col items-center gap-6 list-none m-0 p-0 text-center">
+        <li><a href="#villa"      class="mobile-nav-link font-display text-3xl text-white hover:text-gold transition-colors duration-200">The Villa</a></li>
+        <li><a href="#amenities"  class="mobile-nav-link font-display text-3xl text-white hover:text-gold transition-colors duration-200">Amenities</a></li>
+        <li><a href="#gallery"    class="mobile-nav-link font-display text-3xl text-white hover:text-gold transition-colors duration-200">Gallery</a></li>
+        <li><a href="#nearby"     class="mobile-nav-link font-display text-3xl text-white hover:text-gold transition-colors duration-200">Nearby</a></li>
+        <li><a href="#contact"    class="mobile-nav-link font-display text-3xl text-white hover:text-gold transition-colors duration-200">Contact</a></li>
+      </ul>
+
+      <a
+        href="#contact"
+        class="mobile-nav-link mt-10 px-8 py-3 rounded-full bg-gold text-white font-semibold tracking-wide hover:bg-amber-600 transition-colors duration-200"
+      >
+        Reserve Your Stay
+      </a>
+    </div>
+  </header>
+
+
+  <!-- ============================================================
+       HERO SECTION
+  ============================================================ -->
+  <section id="hero" class="relative w-full h-screen overflow-hidden" aria-label="Jeevika Haven — hero">
+
+    <!-- Slideshow images -->
+    <div id="hero-slides" class="absolute inset-0" aria-hidden="true">
+      <div class="hero-slide absolute inset-0 opacity-100" data-index="0">
+        <img
+          src="images/hero-exterior.jpg"
+          alt="Exterior view of Jeevika Haven villa surrounded by lush greenery"
+          class="hero-slide-img w-full h-full object-cover scale-100"
+        >
+      </div>
+      <div class="hero-slide absolute inset-0 opacity-0" data-index="1">
+        <img
+          src="images/pool-main.jpg"
+          alt="Private swimming pool at Jeevika Haven with garden views"
+          class="hero-slide-img w-full h-full object-cover scale-100"
+        >
+      </div>
+      <div class="hero-slide absolute inset-0 opacity-0" data-index="2">
+        <img
+          src="images/campfire.jpg"
+          alt="Campfire circle in the garden at Jeevika Haven at night"
+          class="hero-slide-img w-full h-full object-cover scale-100"
+        >
+      </div>
+      <div class="hero-slide absolute inset-0 opacity-0" data-index="3">
+        <img
+          src="images/private-main.jpg"
+          alt="Private interior living space of Jeevika Haven villa"
+          class="hero-slide-img w-full h-full object-cover scale-100"
+        >
+      </div>
+    </div>
+
+    <!-- Gradient overlay — transparent at top, dark forest at bottom -->
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background: linear-gradient(to bottom, transparent 0%, transparent 30%, rgba(27,67,50,0.55) 60%, rgba(27,67,50,0.88) 100%);"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Hero content -->
+    <div class="relative z-10 h-full flex items-center">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10 w-full">
+        <div class="max-w-2xl" id="hero-content">
+
+          <!-- Location label -->
+          <p
+            id="hero-label"
+            class="hero-animate text-gold text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] mb-4 opacity-0"
+          >
+            Private Pool Villa · Kombanad, Ernakulam
+          </p>
+
+          <!-- Headline -->
+          <h1
+            id="hero-headline"
+            class="hero-animate font-display text-white text-4xl sm:text-5xl lg:text-6xl leading-[1.1] mb-6 opacity-0"
+          >
+            Luxury, Privacy &amp; Nature —<br>
+            <span class="text-gold">Entirely Yours.</span>
+          </h1>
+
+          <!-- Subline -->
+          <p
+            id="hero-subline"
+            class="hero-animate text-white/85 text-base sm:text-lg leading-relaxed mb-8 max-w-xl opacity-0"
+          >
+            A four-bedroom private villa with its own pool, garden and campfire circle,
+            tucked into the green quiet of Kombanad — twenty minutes from Cochin,
+            a world away from it.
+          </p>
+
+          <!-- CTA buttons -->
+          <div id="hero-ctas" class="hero-animate flex flex-wrap gap-4 opacity-0">
+            <!-- Reserve button with pulsing ring -->
+            <div class="relative inline-flex items-center justify-center">
+              <!-- Pulsing ring -->
+              <span
+                class="absolute inset-0 rounded-full bg-gold/40 animate-ping"
+                aria-hidden="true"
+              ></span>
+              <a
+                href="#contact"
+                class="relative px-7 py-3.5 rounded-full bg-gold text-white font-semibold text-sm tracking-wide hover:bg-amber-600 transition-colors duration-200 whitespace-nowrap"
+              >
+                Reserve Your Stay
+              </a>
+            </div>
+
+            <!-- Explore button -->
+            <a
+              href="#villa"
+              class="px-7 py-3.5 rounded-full border border-white/70 text-white font-semibold text-sm tracking-wide hover:bg-white/10 transition-colors duration-200 whitespace-nowrap"
+            >
+              Explore the Villa
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide progress dots -->
+    <div
+      id="slide-dots"
+      class="absolute bottom-10 right-6 md:right-10 flex gap-2 z-10"
+      role="tablist"
+      aria-label="Slideshow navigation"
+    >
+      <button role="tab" aria-selected="true"  aria-label="Slide 1" data-dot="0" class="slide-dot w-2 h-2 rounded-full bg-gold transition-all duration-300"></button>
+      <button role="tab" aria-selected="false" aria-label="Slide 2" data-dot="1" class="slide-dot w-2 h-2 rounded-full bg-white/40 transition-all duration-300"></button>
+      <button role="tab" aria-selected="false" aria-label="Slide 3" data-dot="2" class="slide-dot w-2 h-2 rounded-full bg-white/40 transition-all duration-300"></button>
+      <button role="tab" aria-selected="false" aria-label="Slide 4" data-dot="3" class="slide-dot w-2 h-2 rounded-full bg-white/40 transition-all duration-300"></button>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div
+      class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10"
+      aria-hidden="true"
+    >
+      <span class="text-white/50 text-[10px] font-semibold tracking-[0.25em] uppercase">Scroll</span>
+      <div class="w-px h-10 bg-white/30"></div>
+    </div>
+
+  </section>
+
+  <!-- ============================================================
+       ABOUT / VILLA SECTION
+  ============================================================ -->
+  <section id="villa" class="py-20 md:py-28 bg-ivory overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+        <!-- Image column -->
+        <div id="villa-image" class="opacity-0">
+          <div class="rounded-2xl overflow-hidden h-[340px] sm:h-[400px] md:h-[420px] w-full">
+            <img
+              src="images/living-hall.jpg"
+              alt="Sunlit living hall inside Jeevika Haven with comfortable seating and natural light"
+              loading="lazy"
+              class="w-full h-full object-cover"
+            >
+          </div>
+        </div>
+
+        <!-- Text column -->
+        <div id="villa-text" class="opacity-0">
+          <p class="text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3">
+            The Villa
+          </p>
+          <h2 class="font-display text-charcoal text-3xl sm:text-4xl lg:text-5xl leading-[1.15] mb-6">
+            A Home, Only More So.
+          </h2>
+          <p class="text-charcoal/75 text-base sm:text-lg leading-relaxed mb-5">
+            Jeevika Haven isn't a room you rent — it's an entire villa you inherit for a few days.
+            Four AC bedrooms, a sunlit living hall, a fully equipped kitchen, and a lawn that
+            runs into the trees.
+          </p>
+          <p class="text-charcoal/75 text-base sm:text-lg leading-relaxed">
+            Every door is yours, every hour unhurried. Mornings begin with filter coffee on the
+            porch; evenings end by firelight, pool lights glowing against the dark.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       WHY CHOOSE US SECTION
+  ============================================================ -->
+  <section id="amenities" class="py-20 md:py-28 bg-forestlight">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+      <!-- Section header -->
+      <div class="text-center mb-14 md:mb-16">
+        <p class="text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3">
+          Why Jeevika Haven
+        </p>
+        <h2 class="font-display text-charcoal text-3xl sm:text-4xl lg:text-5xl leading-[1.15]">
+          Everything a Getaway<br class="hidden sm:block"> Should Feel Like
+        </h2>
+      </div>
+
+      <!-- Cards grid -->
+      <ul id="why-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 list-none m-0 p-0">
+
+        <!-- Card 1 — Entire Villa -->
+        <li class="why-card bg-white rounded-2xl p-7 flex flex-col gap-4 opacity-0
+                   transition-[transform,box-shadow] duration-300 ease-out
+                   hover:-translate-y-1.5 hover:shadow-xl cursor-default">
+          <div class="w-11 h-11 rounded-full bg-forestlight flex items-center justify-center shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="#1B4332" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-5 h-5" aria-hidden="true">
+              <!-- House outline -->
+              <path d="M3 10.5L12 3l9 7.5V21a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10.5Z"/>
+              <path d="M9 22V12h6v10"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-display text-charcoal text-lg leading-snug mb-2">Entire Villa, Just for You</h3>
+            <p class="text-charcoal/65 text-sm leading-relaxed">
+              No shared walls, no strangers in the hallway — the whole property,
+              gates included, is yours alone.
+            </p>
+          </div>
+        </li>
+
+        <!-- Card 2 — Private Pool -->
+        <li class="why-card bg-white rounded-2xl p-7 flex flex-col gap-4 opacity-0
+                   transition-[transform,box-shadow] duration-300 ease-out
+                   hover:-translate-y-1.5 hover:shadow-xl cursor-default">
+          <div class="w-11 h-11 rounded-full bg-forestlight flex items-center justify-center shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="#1B4332" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-5 h-5" aria-hidden="true">
+              <!-- Water waves -->
+              <path d="M2 12c1.5-2 3.5-2 5 0s3.5 2 5 0 3.5-2 5 0"/>
+              <path d="M2 17c1.5-2 3.5-2 5 0s3.5 2 5 0 3.5-2 5 0"/>
+              <path d="M7 3v6M17 3v6"/>
+              <path d="M5 7h14"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-display text-charcoal text-lg leading-snug mb-2">Your Own Private Pool</h3>
+            <p class="text-charcoal/65 text-sm leading-relaxed">
+              Swim at sunrise or under string lights at midnight — either way,
+              it's entirely private.
+            </p>
+          </div>
+        </li>
+
+        <!-- Card 3 — Breakfast -->
+        <li class="why-card bg-white rounded-2xl p-7 flex flex-col gap-4 opacity-0
+                   transition-[transform,box-shadow] duration-300 ease-out
+                   hover:-translate-y-1.5 hover:shadow-xl cursor-default">
+          <div class="w-11 h-11 rounded-full bg-forestlight flex items-center justify-center shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="#1B4332" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-5 h-5" aria-hidden="true">
+              <!-- Bowl / plate -->
+              <path d="M4 11c0 4.4 3.6 8 8 8s8-3.6 8-8H4Z"/>
+              <path d="M2 11h20"/>
+              <path d="M12 3v4M8.5 4.5l1.5 2M15.5 4.5l-1.5 2"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-display text-charcoal text-lg leading-snug mb-2">Cooked Slow, Served Fresh</h3>
+            <p class="text-charcoal/65 text-sm leading-relaxed">
+              A complimentary Kerala breakfast — appam, kappa, or a full spread —
+              to start every morning right.
+            </p>
+          </div>
+        </li>
+
+        <!-- Card 4 — Deep in Green -->
+        <li class="why-card bg-white rounded-2xl p-7 flex flex-col gap-4 opacity-0
+                   transition-[transform,box-shadow] duration-300 ease-out
+                   hover:-translate-y-1.5 hover:shadow-xl cursor-default">
+          <div class="w-11 h-11 rounded-full bg-forestlight flex items-center justify-center shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="#1B4332" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-5 h-5" aria-hidden="true">
+              <!-- Tree -->
+              <path d="M12 22v-7"/>
+              <path d="M12 15l-4-5h8l-4 5Z"/>
+              <path d="M10 10L6.5 5h11L14 10"/>
+              <path d="M9 5l2.5-4 2.5 4"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-display text-charcoal text-lg leading-snug mb-2">Deep in Green</h3>
+            <p class="text-charcoal/65 text-sm leading-relaxed">
+              Surrounded by trees and quiet, with the Kerala countryside starting
+              right at the gate.
+            </p>
+          </div>
+        </li>
+
+        <!-- Card 5 — Campfire -->
+        <li class="why-card bg-white rounded-2xl p-7 flex flex-col gap-4 opacity-0
+                   transition-[transform,box-shadow] duration-300 ease-out
+                   hover:-translate-y-1.5 hover:shadow-xl cursor-default">
+          <div class="w-11 h-11 rounded-full bg-forestlight flex items-center justify-center shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="#1B4332" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-5 h-5" aria-hidden="true">
+              <!-- Flame -->
+              <path d="M12 2c0 0-5 5-5 10a5 5 0 0 0 10 0C17 7 12 2 12 2Z"/>
+              <path d="M12 12c0 0-2 2-2 4a2 2 0 0 0 4 0c0-2-2-4-2-4Z"/>
+              <path d="M5 21h14"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-display text-charcoal text-lg leading-snug mb-2">Fires and Late Nights</h3>
+            <p class="text-charcoal/65 text-sm leading-relaxed">
+              A stone firepit by the pool — add it on, and let the evening run long.
+            </p>
+          </div>
+        </li>
+
+        <!-- Card 6 — Games -->
+        <li class="why-card bg-white rounded-2xl p-7 flex flex-col gap-4 opacity-0
+                   transition-[transform,box-shadow] duration-300 ease-out
+                   hover:-translate-y-1.5 hover:shadow-xl cursor-default">
+          <div class="w-11 h-11 rounded-full bg-forestlight flex items-center justify-center shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="#1B4332" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-5 h-5" aria-hidden="true">
+              <!-- Badminton / racquet suggestion -->
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M8 12h8"/>
+              <path d="M12 8v8"/>
+              <path d="M9.5 9.5l5 5M14.5 9.5l-5 5"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-display text-charcoal text-lg leading-snug mb-2">Room for Everyone</h3>
+            <p class="text-charcoal/65 text-sm leading-relaxed">
+              A badminton court and indoor games — built for families, friend groups
+              and long weekends.
+            </p>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ROOMS SECTION
+  ============================================================ -->
+  <section id="rooms" class="py-20 md:py-28 bg-ivory">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+      <!-- Header -->
+      <div class="text-center mb-14 md:mb-16">
+        <p class="text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3">The Spaces</p>
+        <h2 class="font-display text-charcoal text-3xl sm:text-4xl lg:text-5xl leading-[1.15]">
+          Rooms Built for Rest
+        </h2>
+      </div>
+
+      <!-- Cards grid -->
+      <ul id="rooms-grid" class="grid grid-cols-1 md:grid-cols-3 gap-7 list-none m-0 p-0">
+
+        <!-- Card 1 — Bedroom -->
+        <li class="room-card bg-white rounded-2xl overflow-hidden opacity-0
+                   transition-[transform,box-shadow] duration-300 ease-out
+                   hover:-translate-y-1.5 hover:shadow-xl">
+          <div class="overflow-hidden h-64">
+            <img
+              src="images/bedroom.jpg"
+              alt="Spacious air-conditioned bedroom at Jeevika Haven with large wooden bed"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-500 ease-out hover:scale-[1.08]"
+            >
+          </div>
+          <div class="p-7">
+            <h3 class="font-display text-charcoal text-xl leading-snug mb-3">Wake Up to Comfort</h3>
+            <p class="text-charcoal/65 text-sm leading-relaxed">
+              Four spacious AC bedrooms with attached bathrooms and large wooden beds —
+              crafted for peaceful nights and slow mornings.
+            </p>
+          </div>
+        </li>
+
+        <!-- Card 2 — Living Hall -->
+        <li class="room-card bg-white rounded-2xl overflow-hidden opacity-0
+                   transition-[transform,box-shadow] duration-300 ease-out
+                   hover:-translate-y-1.5 hover:shadow-xl">
+          <div class="overflow-hidden h-64">
+            <img
+              src="images/living-hall.jpg"
+              alt="Sunlit living hall with elegant wooden furniture at Jeevika Haven"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-500 ease-out hover:scale-[1.08]"
+            >
+          </div>
+          <div class="p-7">
+            <h3 class="font-display text-charcoal text-xl leading-snug mb-3">Where the Day Slows Down</h3>
+            <p class="text-charcoal/65 text-sm leading-relaxed">
+              A wide, sunlit hall with elegant wooden furniture — for cards,
+              conversation, or doing absolutely nothing.
+            </p>
+          </div>
+        </li>
+
+        <!-- Card 3 — Kitchen -->
+        <li class="room-card bg-white rounded-2xl overflow-hidden opacity-0
+                   transition-[transform,box-shadow] duration-300 ease-out
+                   hover:-translate-y-1.5 hover:shadow-xl">
+          <div class="overflow-hidden h-64">
+            <img
+              src="images/kitchen.jpg"
+              alt="Fully equipped kitchen inside Jeevika Haven villa"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-500 ease-out hover:scale-[1.08]"
+            >
+          </div>
+          <div class="p-7">
+            <h3 class="font-display text-charcoal text-xl leading-snug mb-3">A Kitchen That Works</h3>
+            <p class="text-charcoal/65 text-sm leading-relaxed">
+              Cook together as a family, or let us handle breakfast — either way,
+              it's fully equipped and ready.
+            </p>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       GALLERY SECTION
+  ============================================================ -->
+  <section id="gallery" class="py-20 md:py-28 bg-forest">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+      <!-- Header -->
+      <div class="text-center mb-14 md:mb-16">
+        <p class="text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3">The Experience</p>
+        <h2 class="font-display text-white text-3xl sm:text-4xl lg:text-5xl leading-[1.15]">
+          Moments You'll Replay
+        </h2>
+      </div>
+
+      <!-- Explicit grid-template-areas — desktop 4-col × 3-row, mobile single column -->
+      <!-- Layout:
+           Row 1: pool-main  pool-main  pool-night  campfire
+           Row 2: pool-main  pool-main  games       bbq
+           Row 3: private    private    private     breakfast
+      -->
+      <ul
+        id="gallery-grid"
+        class="list-none m-0 p-0"
+        aria-label="Photo gallery"
+      >
+
+        <!-- 1 — Pool main: 2-col × 2-row -->
+        <li class="gallery-item gallery-pool-main overflow-hidden rounded-2xl relative group">
+          <button
+            class="w-full h-full block cursor-zoom-in"
+            data-src="images/pool-main.jpg"
+            data-caption="Your Own Private Oasis"
+            aria-label="Open image: Your Own Private Oasis"
+          >
+            <img
+              src="images/pool-main.jpg"
+              alt="Your Own Private Oasis — the private swimming pool at Jeevika Haven in full sunlight"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            >
+            <span class="gallery-caption absolute bottom-0 left-0 right-0 px-5 py-3
+                         bg-gradient-to-t from-forest/80 to-transparent
+                         text-white text-sm font-medium opacity-0 group-hover:opacity-100
+                         transition-opacity duration-300">
+              Your Own Private Oasis
+            </span>
+          </button>
+        </li>
+
+        <!-- 2 — Pool night -->
+        <li class="gallery-item gallery-pool-night overflow-hidden rounded-2xl relative group">
+          <button
+            class="w-full h-full block cursor-zoom-in"
+            data-src="images/pool-night.jpg"
+            data-caption="Long Evenings by the Water"
+            aria-label="Open image: Long Evenings by the Water"
+          >
+            <img
+              src="images/pool-night.jpg"
+              alt="Long Evenings by the Water — Jeevika Haven pool lit up at night"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            >
+            <span class="gallery-caption absolute bottom-0 left-0 right-0 px-5 py-3
+                         bg-gradient-to-t from-forest/80 to-transparent
+                         text-white text-sm font-medium opacity-0 group-hover:opacity-100
+                         transition-opacity duration-300">
+              Long Evenings by the Water
+            </span>
+          </button>
+        </li>
+
+        <!-- 3 — Campfire -->
+        <li class="gallery-item gallery-campfire overflow-hidden rounded-2xl relative group">
+          <button
+            class="w-full h-full block cursor-zoom-in"
+            data-src="images/campfire.jpg"
+            data-caption="Stories Around the Fire"
+            aria-label="Open image: Stories Around the Fire"
+          >
+            <img
+              src="images/campfire.jpg"
+              alt="Stories Around the Fire — campfire circle at Jeevika Haven at night"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            >
+            <span class="gallery-caption absolute bottom-0 left-0 right-0 px-5 py-3
+                         bg-gradient-to-t from-forest/80 to-transparent
+                         text-white text-sm font-medium opacity-0 group-hover:opacity-100
+                         transition-opacity duration-300">
+              Stories Around the Fire
+            </span>
+          </button>
+        </li>
+
+        <!-- 4 — Games court -->
+        <li class="gallery-item gallery-games overflow-hidden rounded-2xl relative group">
+          <button
+            class="w-full h-full block cursor-zoom-in"
+            data-src="images/games-court.jpg"
+            data-caption="An Afternoon of Badminton"
+            aria-label="Open image: An Afternoon of Badminton"
+          >
+            <img
+              src="images/games-court.jpg"
+              alt="An Afternoon of Badminton — outdoor games court at Jeevika Haven"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            >
+            <span class="gallery-caption absolute bottom-0 left-0 right-0 px-5 py-3
+                         bg-gradient-to-t from-forest/80 to-transparent
+                         text-white text-sm font-medium opacity-0 group-hover:opacity-100
+                         transition-opacity duration-300">
+              An Afternoon of Badminton
+            </span>
+          </button>
+        </li>
+
+        <!-- 5 — BBQ skewers -->
+        <li class="gallery-item gallery-bbq overflow-hidden rounded-2xl relative group">
+          <button
+            class="w-full h-full block cursor-zoom-in"
+            data-src="images/bbq-skewers.jpg"
+            data-caption="Smoke, Skewers, Good Company"
+            aria-label="Open image: Smoke, Skewers, Good Company"
+          >
+            <img
+              src="images/bbq-skewers.jpg"
+              alt="Smoke, Skewers, Good Company — BBQ skewers grilling at Jeevika Haven"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            >
+            <span class="gallery-caption absolute bottom-0 left-0 right-0 px-5 py-3
+                         bg-gradient-to-t from-forest/80 to-transparent
+                         text-white text-sm font-medium opacity-0 group-hover:opacity-100
+                         transition-opacity duration-300">
+              Smoke, Skewers, Good Company
+            </span>
+          </button>
+        </li>
+
+        <!-- 6 — Private main: spans 3 cols in bottom row -->
+        <li class="gallery-item gallery-private overflow-hidden rounded-2xl relative group">
+          <button
+            class="w-full h-full block cursor-zoom-in"
+            data-src="images/private-main.jpg"
+            data-caption="The Whole Property, Just for You"
+            aria-label="Open image: The Whole Property, Just for You"
+          >
+            <img
+              src="images/private-main.jpg"
+              alt="The Whole Property, Just for You — private villa interior at Jeevika Haven"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            >
+            <span class="gallery-caption absolute bottom-0 left-0 right-0 px-5 py-3
+                         bg-gradient-to-t from-forest/80 to-transparent
+                         text-white text-sm font-medium opacity-0 group-hover:opacity-100
+                         transition-opacity duration-300">
+              The Whole Property, Just for You
+            </span>
+          </button>
+        </li>
+
+        <!-- 7 — Breakfast -->
+        <li class="gallery-item gallery-breakfast overflow-hidden rounded-2xl relative group">
+          <button
+            class="w-full h-full block cursor-zoom-in"
+            data-src="images/breakfast.jpg"
+            data-caption="Fresh Kerala Mornings"
+            aria-label="Open image: Fresh Kerala Mornings"
+          >
+            <img
+              src="images/breakfast.jpg"
+              alt="Fresh Kerala Mornings — traditional Kerala breakfast spread at Jeevika Haven"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            >
+            <span class="gallery-caption absolute bottom-0 left-0 right-0 px-5 py-3
+                         bg-gradient-to-t from-forest/80 to-transparent
+                         text-white text-sm font-medium opacity-0 group-hover:opacity-100
+                         transition-opacity duration-300">
+              Fresh Kerala Mornings
+            </span>
+          </button>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       AMENITIES SECTION
+  ============================================================ -->
+  <section id="amenities-icons" class="py-20 md:py-28 bg-ivory">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+      <!-- Header -->
+      <div class="text-center mb-14 md:mb-16">
+        <p class="text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3">At Your Service</p>
+        <h2 class="font-display text-charcoal text-3xl sm:text-4xl lg:text-5xl leading-[1.15]">
+          Everything, Already Here
+        </h2>
+      </div>
+
+      <!-- Icon grid -->
+      <ul id="amenities-grid"
+          class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 list-none m-0 p-0">
+
+        <!-- Private Pool -->
+        <li class="amenity-item flex flex-col items-center gap-3 text-center opacity-0">
+          <div class="w-16 h-16 rounded-full bg-forestlight flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="#1B4332" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-7 h-7" aria-hidden="true">
+              <path d="M2 12c1.5-2 3.5-2 5 0s3.5 2 5 0 3.5-2 5 0"/>
+              <path d="M2 17c1.5-2 3.5-2 5 0s3.5 2 5 0 3.5-2 5 0"/>
+              <path d="M7 3v6M17 3v6"/>
+              <path d="M5 7h14"/>
+            </svg>
+          </div>
+          <span class="text-charcoal text-sm font-medium leading-snug">Private Pool</span>
+        </li>
+
+        <!-- Indoor & Outdoor Games -->
+        <li class="amenity-item flex flex-col items-center gap-3 text-center opacity-0">
+          <div class="w-16 h-16 rounded-full bg-forestlight flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="#1B4332" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-7 h-7" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M8 12h8M12 8v8"/>
+              <path d="M9.5 9.5l5 5M14.5 9.5l-5 5"/>
+            </svg>
+          </div>
+          <span class="text-charcoal text-sm font-medium leading-snug">Indoor &amp; Outdoor Games</span>
+        </li>
+
+        <!-- Campfire -->
+        <li class="amenity-item flex flex-col items-center gap-3 text-center opacity-0">
+          <div class="w-16 h-16 rounded-full bg-forestlight flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="#1B4332" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-7 h-7" aria-hidden="true">
+              <path d="M12 2c0 0-5 5-5 10a5 5 0 0 0 10 0C17 7 12 2 12 2Z"/>
+              <path d="M12 12c0 0-2 2-2 4a2 2 0 0 0 4 0c0-2-2-4-2-4Z"/>
+              <path d="M5 21h14"/>
+            </svg>
+          </div>
+          <span class="text-charcoal text-sm font-medium leading-snug">Campfire</span>
+        </li>
+
+        <!-- Barbecue & Grill -->
+        <li class="amenity-item flex flex-col items-center gap-3 text-center opacity-0">
+          <div class="w-16 h-16 rounded-full bg-forestlight flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="#1B4332" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-7 h-7" aria-hidden="true">
+              <path d="M4 12h16"/>
+              <path d="M4 12c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+              <path d="M12 12v8"/>
+              <path d="M9 20h6"/>
+              <path d="M8 5l-1-3M16 5l1-3"/>
+            </svg>
+          </div>
+          <span class="text-charcoal text-sm font-medium leading-snug">Barbecue &amp; Grill</span>
+        </li>
+
+        <!-- Complimentary Breakfast -->
+        <li class="amenity-item flex flex-col items-center gap-3 text-center opacity-0">
+          <div class="w-16 h-16 rounded-full bg-forestlight flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="#1B4332" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-7 h-7" aria-hidden="true">
+              <path d="M4 11c0 4.4 3.6 8 8 8s8-3.6 8-8H4Z"/>
+              <path d="M2 11h20"/>
+              <path d="M12 3v4M8.5 4.5l1.5 2M15.5 4.5l-1.5 2"/>
+            </svg>
+          </div>
+          <span class="text-charcoal text-sm font-medium leading-snug">Complimentary Breakfast</span>
+        </li>
+
+        <!-- Full Property Access -->
+        <li class="amenity-item flex flex-col items-center gap-3 text-center opacity-0">
+          <div class="w-16 h-16 rounded-full bg-forestlight flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                 stroke="#1B4332" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"
+                 class="w-7 h-7" aria-hidden="true">
+              <path d="M3 10.5L12 3l9 7.5V21a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10.5Z"/>
+              <path d="M9 22V12h6v10"/>
+              <circle cx="12" cy="8" r="1.5" fill="#1B4332"/>
+            </svg>
+          </div>
+          <span class="text-charcoal text-sm font-medium leading-snug">Full Property Access</span>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       PERFECT FOR SECTION
+  ============================================================ -->
+  <section id="perfect-for" class="py-20 md:py-24" style="background-color: rgba(234,223,197,0.4);">
+    <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center">
+
+      <h2 class="font-display text-charcoal text-3xl sm:text-4xl lg:text-5xl leading-[1.15] mb-10">
+        Perfect For
+      </h2>
+
+      <!-- Pill tags -->
+      <ul id="pills-grid" class="flex flex-wrap justify-center gap-3 list-none m-0 p-0">
+        <li class="pill-item opacity-0">
+          <span class="inline-block px-5 py-2.5 rounded-full bg-white border border-charcoal/15
+                       text-charcoal text-sm font-medium tracking-wide shadow-sm">
+            Family Stay
+          </span>
+        </li>
+        <li class="pill-item opacity-0">
+          <span class="inline-block px-5 py-2.5 rounded-full bg-white border border-charcoal/15
+                       text-charcoal text-sm font-medium tracking-wide shadow-sm">
+            Friends Get-Together
+          </span>
+        </li>
+        <li class="pill-item opacity-0">
+          <span class="inline-block px-5 py-2.5 rounded-full bg-white border border-charcoal/15
+                       text-charcoal text-sm font-medium tracking-wide shadow-sm">
+            Corporate Team Outing
+          </span>
+        </li>
+        <li class="pill-item opacity-0">
+          <span class="inline-block px-5 py-2.5 rounded-full bg-white border border-charcoal/15
+                       text-charcoal text-sm font-medium tracking-wide shadow-sm">
+            Birthday Parties
+          </span>
+        </li>
+        <li class="pill-item opacity-0">
+          <span class="inline-block px-5 py-2.5 rounded-full bg-white border border-charcoal/15
+                       text-charcoal text-sm font-medium tracking-wide shadow-sm">
+            Bachelor Parties
+          </span>
+        </li>
+        <li class="pill-item opacity-0">
+          <span class="inline-block px-5 py-2.5 rounded-full bg-white border border-charcoal/15
+                       text-charcoal text-sm font-medium tracking-wide shadow-sm">
+            Weekend Getaway
+          </span>
+        </li>
+        <li class="pill-item opacity-0">
+          <span class="inline-block px-5 py-2.5 rounded-full bg-white border border-charcoal/15
+                       text-charcoal text-sm font-medium tracking-wide shadow-sm">
+            Small Celebrations
+          </span>
+        </li>
+      </ul>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       NEARBY ATTRACTIONS SECTION
+  ============================================================ -->
+  <section id="nearby" class="py-20 md:py-28 bg-ivory">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+      <!-- Header -->
+      <div class="text-center mb-14 md:mb-16">
+        <p class="text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3">Nearby</p>
+        <h2 class="font-display text-charcoal text-3xl sm:text-4xl lg:text-5xl leading-[1.15] mb-4">
+          Worth the Detour
+        </h2>
+        <p class="text-charcoal/60 text-base italic">
+          Perfect location for nature lovers, trekking, sightseeing and relaxation.
+        </p>
+      </div>
+
+      <!-- Attractions grid -->
+      <ul id="nearby-grid"
+          class="grid grid-cols-2 md:grid-cols-3 gap-5 list-none m-0 p-0">
+
+        <!-- Paniyeli Poru -->
+        <li class="nearby-card rounded-xl overflow-hidden relative group opacity-0
+                   transition-[transform,box-shadow] duration-300 ease-out
+                   hover:-translate-y-1.5 hover:shadow-xl h-40">
+          <img
+            src="images/attraction-paniyeli-poru.jpg"
+            alt="Paniyeli Poru — scenic river rapids near Jeevika Haven"
+            class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          >
+          <div class="absolute inset-0"
+               style="background: linear-gradient(to top, rgba(27,67,50,0.75) 0%, transparent 55%);"
+               aria-hidden="true"></div>
+          <span class="absolute bottom-0 left-0 px-4 py-3 text-white text-sm font-semibold leading-tight">
+            Paniyeli Poru
+          </span>
+        </li>
+
+        <!-- Abhayaranyam Kombanad -->
+        <li class="nearby-card rounded-xl overflow-hidden relative group opacity-0
+                   transition-[transform,box-shadow] duration-300 ease-out
+                   hover:-translate-y-1.5 hover:shadow-xl h-40">
+          <img
+            src="images/attraction-abhayaranyam-kombanad.jpg"
+            alt="Abhayaranyam Kombanad — wildlife sanctuary near Jeevika Haven"
+            class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          >
+          <div class="absolute inset-0"
+               style="background: linear-gradient(to top, rgba(27,67,50,0.75) 0%, transparent 55%);"
+               aria-hidden="true"></div>
+          <span class="absolute bottom-0 left-0 px-4 py-3 text-white text-sm font-semibold leading-tight">
+            Abhayaranyam Kombanad
+          </span>
+        </li>
+
+        <!-- Haritha Bio Park -->
+        <li class="nearby-card rounded-xl overflow-hidden relative group opacity-0
+                   transition-[transform,box-shadow] duration-300 ease-out
+                   hover:-translate-y-1.5 hover:shadow-xl h-40">
+          <img
+            src="images/attraction-haritha-bio-park.jpg"
+            alt="Haritha Bio Park — green botanical garden near Jeevika Haven"
+            class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          >
+          <div class="absolute inset-0"
+               style="background: linear-gradient(to top, rgba(27,67,50,0.75) 0%, transparent 55%);"
+               aria-hidden="true"></div>
+          <span class="absolute bottom-0 left-0 px-4 py-3 text-white text-sm font-semibold leading-tight">
+            Haritha Bio Park
+          </span>
+        </li>
+
+        <!-- The Chira Club Park -->
+        <li class="nearby-card rounded-xl overflow-hidden relative group opacity-0
+                   transition-[transform,box-shadow] duration-300 ease-out
+                   hover:-translate-y-1.5 hover:shadow-xl h-40">
+          <img
+            src="images/attraction-chira-club-park.jpg"
+            alt="The Chira Club Park — leisure park near Jeevika Haven"
+            class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          >
+          <div class="absolute inset-0"
+               style="background: linear-gradient(to top, rgba(27,67,50,0.75) 0%, transparent 55%);"
+               aria-hidden="true"></div>
+          <span class="absolute bottom-0 left-0 px-4 py-3 text-white text-sm font-semibold leading-tight">
+            The Chira Club Park
+          </span>
+        </li>
+
+        <!-- Kodenad Elephant Kraal -->
+        <li class="nearby-card rounded-xl overflow-hidden relative group opacity-0
+                   transition-[transform,box-shadow] duration-300 ease-out
+                   hover:-translate-y-1.5 hover:shadow-xl h-40">
+          <img
+            src="images/attraction-kodenad-elephant-kraal.jpg"
+            alt="Kodenad Elephant Kraal — elephant sanctuary near Jeevika Haven"
+            class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          >
+          <div class="absolute inset-0"
+               style="background: linear-gradient(to top, rgba(27,67,50,0.75) 0%, transparent 55%);"
+               aria-hidden="true"></div>
+          <span class="absolute bottom-0 left-0 px-4 py-3 text-white text-sm font-semibold leading-tight">
+            Kodenad Elephant Kraal
+          </span>
+        </li>
+
+        <!-- Panamkuzhi -->
+        <li class="nearby-card rounded-xl overflow-hidden relative group opacity-0
+                   transition-[transform,box-shadow] duration-300 ease-out
+                   hover:-translate-y-1.5 hover:shadow-xl h-40">
+          <img
+            src="images/attraction-panamkuzhi.jpg"
+            alt="Panamkuzhi — natural attraction near Jeevika Haven"
+            class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          >
+          <div class="absolute inset-0"
+               style="background: linear-gradient(to top, rgba(27,67,50,0.75) 0%, transparent 55%);"
+               aria-hidden="true"></div>
+          <span class="absolute bottom-0 left-0 px-4 py-3 text-white text-sm font-semibold leading-tight">
+            Panamkuzhi
+          </span>
+        </li>
+
+        <!-- Puliyanipara View Point -->
+        <li class="nearby-card rounded-xl overflow-hidden relative group opacity-0
+                   transition-[transform,box-shadow] duration-300 ease-out
+                   hover:-translate-y-1.5 hover:shadow-xl h-40">
+          <img
+            src="images/attraction-puliyanipara-viewpoint.jpg"
+            alt="Puliyanipara View Point — hilltop viewpoint near Jeevika Haven"
+            class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          >
+          <div class="absolute inset-0"
+               style="background: linear-gradient(to top, rgba(27,67,50,0.75) 0%, transparent 55%);"
+               aria-hidden="true"></div>
+          <span class="absolute bottom-0 left-0 px-4 py-3 text-white text-sm font-semibold leading-tight">
+            Puliyanipara View Point
+          </span>
+        </li>
+
+        <!-- Malayattoor Church -->
+        <li class="nearby-card rounded-xl overflow-hidden relative group opacity-0
+                   transition-[transform,box-shadow] duration-300 ease-out
+                   hover:-translate-y-1.5 hover:shadow-xl h-40">
+          <img
+            src="images/attraction-malayattoor-church.jpg"
+            alt="Malayattoor Church — historic hilltop pilgrimage church near Jeevika Haven"
+            class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          >
+          <div class="absolute inset-0"
+               style="background: linear-gradient(to top, rgba(27,67,50,0.75) 0%, transparent 55%);"
+               aria-hidden="true"></div>
+          <span class="absolute bottom-0 left-0 px-4 py-3 text-white text-sm font-semibold leading-tight">
+            Malayattoor Church
+          </span>
+        </li>
+
+        <!-- Bhoothathankettu Dam -->
+        <li class="nearby-card rounded-xl overflow-hidden relative group opacity-0
+                   transition-[transform,box-shadow] duration-300 ease-out
+                   hover:-translate-y-1.5 hover:shadow-xl h-40">
+          <img
+            src="images/attraction-bhoothathankettu-dam.jpg"
+            alt="Bhoothathankettu Dam — scenic dam and reservoir near Jeevika Haven"
+            class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          >
+          <div class="absolute inset-0"
+               style="background: linear-gradient(to top, rgba(27,67,50,0.75) 0%, transparent 55%);"
+               aria-hidden="true"></div>
+          <span class="absolute bottom-0 left-0 px-4 py-3 text-white text-sm font-semibold leading-tight">
+            Bhoothathankettu Dam
+          </span>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       BOOKING CTA BAND
+  ============================================================ -->
+  <section id="cta-band" class="relative py-24 md:py-32 overflow-hidden" aria-label="Book your stay">
+    <!-- Background image -->
+    <img
+      src="images/pool-night.jpg"
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 w-full h-full object-cover"
+    >
+    <!-- Dark forest overlay 85% -->
+    <div class="absolute inset-0 bg-forest/85" aria-hidden="true"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 max-w-2xl mx-auto px-6 text-center">
+      <h2
+        id="cta-heading"
+        class="cta-animate font-display text-white text-3xl sm:text-4xl lg:text-5xl leading-[1.15] mb-5 opacity-0"
+      >
+        Ready for Your Next Getaway?
+      </h2>
+      <p
+        id="cta-sub"
+        class="cta-animate text-white/75 text-base sm:text-lg leading-relaxed mb-8 opacity-0"
+      >
+        Reserve your stay and we'll confirm the rest on WhatsApp —
+        no payment needed here.
+      </p>
+      <div class="cta-animate opacity-0">
+        <button
+          id="cta-reserve-btn"
+          type="button"
+          class="px-8 py-4 rounded-full bg-gold text-white font-semibold text-sm
+                 tracking-wide hover:bg-amber-600 transition-colors duration-200"
+        >
+          Reserve Your Stay
+        </button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CONTACT / LOCATION SECTION
+  ============================================================ -->
+  <section id="contact" class="py-20 md:py-28 bg-ivory">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-start">
+
+        <!-- Left — contact details -->
+        <div id="contact-left" class="opacity-0">
+          <p class="text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3">
+            Get in Touch
+          </p>
+          <h2 class="font-display text-charcoal text-3xl sm:text-4xl lg:text-5xl leading-[1.15] mb-6">
+            Come Find Us
+          </h2>
+
+          <!-- Address -->
+          <address class="not-italic text-charcoal/70 text-base leading-relaxed mb-8">
+            Chooramudy Road, Thungali,<br>
+            Kombanad, Ernakulam,<br>
+            Kerala 683546
+          </address>
+
+          <!-- Phone links -->
+          <ul class="flex flex-col gap-4 mb-8 list-none m-0 p-0">
+            <li class="flex items-center gap-3">
+              <span class="w-9 h-9 rounded-full bg-forestlight flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                     stroke="#1B4332" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                     class="w-4 h-4" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.09 5.18 2 2 0 0 1 5.08 3h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L9.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/>
+                </svg>
+              </span>
+              <a href="tel:+919447664261"
+                 class="text-charcoal font-medium hover:text-forest transition-colors duration-200">
+                Mathew — +91 94476 64261
+              </a>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-9 h-9 rounded-full bg-forestlight flex items-center justify-center shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                     stroke="#1B4332" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                     class="w-4 h-4" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.09 5.18 2 2 0 0 1 5.08 3h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L9.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/>
+                </svg>
+              </span>
+              <a href="tel:+919778454869"
+                 class="text-charcoal font-medium hover:text-forest transition-colors duration-200">
+                Sanjay — +91 97784 54869
+              </a>
+            </li>
+          </ul>
+
+          <!-- Reserve button -->
+          <button
+            type="button"
+            class="contact-reserve-btn px-7 py-3.5 rounded-full bg-gold text-white font-semibold
+                   text-sm tracking-wide hover:bg-amber-600 transition-colors duration-200"
+          >
+            Reserve Your Stay
+          </button>
+        </div>
+
+        <!-- Right — map -->
+        <div id="contact-right" class="opacity-0">
+          <div class="rounded-2xl overflow-hidden w-full min-h-80 md:min-h-[380px]">
+            <iframe
+              src="https://www.google.com/maps?q=Kombanad,Ernakulam,Kerala&output=embed"
+              width="100%"
+              height="100%"
+              style="min-height: 320px; border: 0; display: block;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Map showing location of Jeevika Haven in Kombanad, Ernakulam, Kerala"
+            ></iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="bg-forest text-white/70">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 pt-14 pb-10">
+
+      <!-- Three columns -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-10">
+
+        <!-- Col 1 — Brand -->
+        <div>
+          <div class="flex items-center gap-2.5 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+                 class="w-7 h-7 text-gold" aria-hidden="true" fill="currentColor">
+              <path d="M16 15C16 15 13 9 16 3C19 9 16 15 16 15Z"/>
+              <path d="M16 17C16 17 19 23 16 29C13 23 16 17 16 17Z"/>
+              <path d="M15 16C15 16 9 19 3 16C9 13 15 16 15 16Z"/>
+              <path d="M17 16C17 16 23 13 29 16C23 19 17 16 17 16Z"/>
+              <circle cx="16" cy="16" r="2"/>
+            </svg>
+            <span class="font-display text-white text-lg leading-none">
+              Jeevika <span class="text-gold">Haven</span>
+            </span>
+          </div>
+          <p class="text-sm leading-relaxed">
+            A private pool villa in the green quiet of Kombanad, Ernakulam —
+            twenty minutes from Cochin, a world away from it.
+          </p>
+        </div>
+
+        <!-- Col 2 — Quick links -->
+        <div>
+          <h3 class="text-white text-sm font-semibold uppercase tracking-widest mb-4">
+            Quick Links
+          </h3>
+          <ul class="flex flex-col gap-2.5 list-none m-0 p-0 text-sm">
+            <li><a href="#villa"     class="hover:text-gold transition-colors duration-200">The Villa</a></li>
+            <li><a href="#amenities" class="hover:text-gold transition-colors duration-200">Amenities</a></li>
+            <li><a href="#gallery"   class="hover:text-gold transition-colors duration-200">Gallery</a></li>
+            <li><a href="#nearby"    class="hover:text-gold transition-colors duration-200">Nearby</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 — Contact -->
+        <div>
+          <h3 class="text-white text-sm font-semibold uppercase tracking-widest mb-4">
+            Contact
+          </h3>
+          <address class="not-italic text-sm leading-relaxed mb-4">
+            Chooramudy Road, Thungali,<br>
+            Kombanad, Ernakulam,<br>
+            Kerala 683546
+          </address>
+          <ul class="flex flex-col gap-2 list-none m-0 p-0 text-sm">
+            <li>
+              <a href="tel:+919447664261"
+                 class="hover:text-gold transition-colors duration-200">
+                Mathew: +91 94476 64261
+              </a>
+            </li>
+            <li>
+              <a href="tel:+919778454869"
+                 class="hover:text-gold transition-colors duration-200">
+                Sanjay: +91 97784 54869
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Divider + copyright -->
+      <div class="border-t border-white/10 pt-6 text-center">
+        <p class="text-xs text-white/40">
+          &copy; 2026 Jeevika Haven Homestay. All rights reserved.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       STICKY MOBILE RESERVE BUTTON
+       — visible only below md breakpoint, z-60 so it floats above
+         all content. Footer gets pb-20 on mobile to avoid overlap.
+  ============================================================ -->
+  <div
+    id="sticky-mobile-btn"
+    class="md:hidden fixed bottom-0 left-0 right-0 z-40
+           px-4 py-3 bg-ivory/95 backdrop-blur-sm shadow-[0_-2px_16px_rgba(0,0,0,0.10)]"
+    aria-label="Mobile booking shortcut"
+  >
+    <button
+      type="button"
+      id="sticky-reserve-btn"
+      class="w-full py-3.5 rounded-full bg-gold text-white font-semibold text-sm
+             tracking-wide hover:bg-amber-600 transition-colors duration-200"
+    >
+      Reserve Your Stay
+    </button>
+  </div>
+
+
+  <!-- ============================================================
+       BOOKING MODAL — full-screen takeover (Aman-style)
+  ============================================================ -->
+  <div
+    id="booking-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-heading"
+    class="fixed inset-0 z-[90] flex flex-col bg-ivory
+           opacity-0 pointer-events-none"
+    style="transition: opacity 0.3s ease;"
+  >
+    <!-- No backdrop needed — modal IS the full screen -->
+
+    <!-- ── Top header bar ────────────────────────────────── -->
+    <div class="shrink-0 flex items-center justify-between
+                px-6 md:px-12 py-4 border-b border-charcoal/10 bg-ivory">
+
+      <!-- Logo -->
+      <div class="flex items-center gap-2.5">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+             class="w-7 h-7 text-forest" aria-hidden="true" fill="currentColor">
+          <path d="M16 15C16 15 13 9 16 3C19 9 16 15 16 15Z"/>
+          <path d="M16 17C16 17 19 23 16 29C13 23 16 17 16 17Z"/>
+          <path d="M15 16C15 16 9 19 3 16C9 13 15 16 15 16Z"/>
+          <path d="M17 16C17 16 23 13 29 16C23 19 17 16 17 16Z"/>
+          <circle cx="16" cy="16" r="2"/>
+        </svg>
+        <span class="font-display text-charcoal text-lg leading-none">
+          Jeevika <span class="text-gold">Haven</span>
+        </span>
+      </div>
+
+      <!-- Heading (desktop only, centred) -->
+      <h2 id="modal-heading"
+          class="hidden md:block font-display text-charcoal text-xl absolute left-1/2 -translate-x-1/2">
+        Reserve Your Stay
+      </h2>
+
+      <!-- Close button -->
+      <button
+        id="modal-close"
+        class="w-9 h-9 flex items-center justify-center rounded-full
+               hover:bg-charcoal/8 transition-colors duration-200"
+        aria-label="Close booking modal"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round"
+             class="w-5 h-5 text-charcoal" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- ── Scrollable body ───────────────────────────────── -->
+    <div id="modal-panel" class="flex-1 overflow-y-auto">
+      <div class="max-w-5xl mx-auto px-6 md:px-12 py-10 md:py-14 w-full">
+
+        <!-- Mobile heading -->
+        <h2 class="md:hidden font-display text-charcoal text-2xl mb-8">
+          Reserve Your Stay
+        </h2>
+
+        <div id="modal-body-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+
+          <!-- LEFT — Calendar -->
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gold mb-4">
+              Select Your Dates
+            </p>
+            <div id="fp-calendar"></div>
+          </div>
+
+          <!-- RIGHT — Details form -->
+          <div class="flex flex-col gap-5">
+
+            <!-- Arrival / Departure summary boxes -->
+            <div class="grid grid-cols-2 gap-3">
+              <div class="bg-forest rounded-xl px-4 py-3">
+                <p class="text-white/60 text-[10px] font-semibold uppercase tracking-widest mb-1">Arrival</p>
+                <p id="modal-arrival" class="text-white font-display text-sm">—</p>
+              </div>
+              <div class="bg-forest rounded-xl px-4 py-3">
+                <p class="text-white/60 text-[10px] font-semibold uppercase tracking-widest mb-1">Departure</p>
+                <p id="modal-departure" class="text-white font-display text-sm">—</p>
+              </div>
+            </div>
+
+            <!-- Adults stepper -->
+            <div class="flex items-center justify-between">
+              <label class="text-charcoal text-sm font-medium">Adults</label>
+              <div class="flex items-center gap-3">
+                <button type="button" id="adults-dec"
+                  class="w-8 h-8 rounded-full border border-charcoal/20 flex items-center justify-center
+                         text-charcoal hover:bg-forestlight transition-colors duration-150 text-lg font-light"
+                  aria-label="Decrease adults">−</button>
+                <span id="adults-count" class="w-6 text-center text-charcoal font-semibold text-sm">2</span>
+                <button type="button" id="adults-inc"
+                  class="w-8 h-8 rounded-full border border-charcoal/20 flex items-center justify-center
+                         text-charcoal hover:bg-forestlight transition-colors duration-150 text-lg font-light"
+                  aria-label="Increase adults">+</button>
+              </div>
+            </div>
+
+            <!-- Children stepper -->
+            <div class="flex items-center justify-between">
+              <label class="text-charcoal text-sm font-medium">Children</label>
+              <div class="flex items-center gap-3">
+                <button type="button" id="children-dec"
+                  class="w-8 h-8 rounded-full border border-charcoal/20 flex items-center justify-center
+                         text-charcoal hover:bg-forestlight transition-colors duration-150 text-lg font-light"
+                  aria-label="Decrease children">−</button>
+                <span id="children-count" class="w-6 text-center text-charcoal font-semibold text-sm">0</span>
+                <button type="button" id="children-inc"
+                  class="w-8 h-8 rounded-full border border-charcoal/20 flex items-center justify-center
+                         text-charcoal hover:bg-forestlight transition-colors duration-150 text-lg font-light"
+                  aria-label="Increase children">+</button>
+              </div>
+            </div>
+
+            <!-- Name -->
+            <div class="flex flex-col gap-1.5">
+              <label for="modal-name" class="text-charcoal text-sm font-medium">
+                Name <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="modal-name"
+                type="text"
+                placeholder="Your full name"
+                autocomplete="name"
+                class="w-full px-4 py-2.5 rounded-xl border border-charcoal/20 bg-white
+                       text-charcoal text-sm placeholder:text-charcoal/35
+                       focus:outline-none focus:ring-2 focus:ring-forest/30 focus:border-forest
+                       transition-colors duration-150"
+              >
+            </div>
+
+            <!-- Phone -->
+            <div class="flex flex-col gap-1.5">
+              <label for="modal-phone" class="text-charcoal text-sm font-medium">
+                Phone <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="modal-phone"
+                type="tel"
+                placeholder="+91 98765 43210"
+                autocomplete="tel"
+                class="w-full px-4 py-2.5 rounded-xl border border-charcoal/20 bg-white
+                       text-charcoal text-sm placeholder:text-charcoal/35
+                       focus:outline-none focus:ring-2 focus:ring-forest/30 focus:border-forest
+                       transition-colors duration-150"
+              >
+            </div>
+
+            <!-- Special request -->
+            <div class="flex flex-col gap-1.5">
+              <label for="modal-request" class="text-charcoal text-sm font-medium">
+                Special Request
+                <span class="text-charcoal/40 font-normal">(optional)</span>
+              </label>
+              <textarea
+                id="modal-request"
+                rows="3"
+                placeholder="e.g. Campfire arrangement, early check-in, dietary needs"
+                class="w-full px-4 py-2.5 rounded-xl border border-charcoal/20 bg-white
+                       text-charcoal text-sm placeholder:text-charcoal/35 resize-none
+                       focus:outline-none focus:ring-2 focus:ring-forest/30 focus:border-forest
+                       transition-colors duration-150"
+              ></textarea>
+            </div>
+
+            <!-- Inline validation error -->
+            <p id="modal-error" class="hidden text-red-600 text-xs font-medium leading-snug -mt-1">
+              Please select your dates and fill in your name and phone number.
+            </p>
+
+            <!-- Submit -->
+            <button
+              type="button"
+              id="modal-submit"
+              class="w-full py-3.5 rounded-full bg-gold text-white font-semibold text-sm
+                     tracking-wide hover:bg-amber-600 transition-colors duration-200"
+            >
+              Check Availability on WhatsApp
+            </button>
+
+            <!-- Disclaimer -->
+            <p class="text-charcoal/45 text-xs leading-relaxed -mt-1 text-center">
+              No payment is collected here. Availability, pricing and confirmation
+              are handled directly on WhatsApp with the host.
+            </p>
+
+          </div><!-- /right col -->
+        </div><!-- /grid -->
+      </div><!-- /max-w wrapper -->
+    </div><!-- /scrollable body -->
+  </div><!-- /modal -->
+
+
+  <!-- ============================================================
+       LIGHTBOX
+  ============================================================ -->
+  <div
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Image lightbox"
+    class="fixed inset-0 z-[100] flex items-center justify-center
+           opacity-0 pointer-events-none"
+    style="background: rgba(0,0,0,0.92); transition: opacity 0.3s ease;"
+  >
+    <!-- Background click target (closes lightbox) -->
+    <div id="lightbox-backdrop" class="absolute inset-0" aria-hidden="true"></div>
+
+    <!-- Close button -->
+    <button
+      id="lightbox-close"
+      class="absolute top-5 right-6 text-white/70 hover:text-white z-10 w-10 h-10
+             flex items-center justify-center transition-colors duration-200"
+      aria-label="Close lightbox"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round"
+           class="w-7 h-7" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+
+    <!-- Image + caption -->
+    <figure class="relative z-10 flex flex-col items-center gap-4 px-6 max-w-5xl w-full">
+      <img
+        id="lightbox-img"
+        src=""
+        alt=""
+        class="max-h-[80vh] max-w-full object-contain rounded-xl"
+      >
+      <figcaption
+        id="lightbox-caption"
+        class="text-white/80 text-sm font-medium tracking-wide text-center"
+      ></figcaption>
+    </figure>
+  </div>
+
+
+<style>
+  /* Nav link gold underline — scale-x on hover */
+  .nav-underline-link {
+    position: relative;
+    padding-bottom: 2px;
+    text-decoration: none;
+  }
+  .nav-underline-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1.5px;
+    background-color: #C9A15A; /* --color-gold */
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.25s ease;
+  }
+  .nav-underline-link:hover::after,
+  .nav-underline-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* -------------------------------------------------------
+     FLATPICKR — brand colour overrides
+     (higher specificity + month header fix)
+  ------------------------------------------------------- */
+  /* Calendar container */
+  #booking-modal #fp-calendar .flatpickr-calendar {
+    box-shadow: none;
+    background: transparent !important;
+    border: none;
+    font-family: var(--font-sans, "Inter", sans-serif);
+  }
+
+  /* MONTH HEADER — critical fix for forest green bar */
+  #booking-modal #fp-calendar .flatpickr-months {
+    background: #1B4332 !important;
+    padding: 0;
+  }
+  #booking-modal #fp-calendar .flatpickr-month {
+    background: #1B4332 !important;
+    color: #fff !important;
+    fill: #fff !important;
+    height: 40px;
+  }
+  #booking-modal #fp-calendar .flatpickr-current-month {
+    padding: 8px 0 0;
+    color: #fff !important;
+  }
+  #booking-modal #fp-calendar .flatpickr-current-month .numInputWrapper {
+    width: 7ch;
+  }
+  #booking-modal #fp-calendar .flatpickr-current-month input.cur-year {
+    color: #fff !important;
+    background: transparent !important;
+    font-weight: 400;
+  }
+  #booking-modal #fp-calendar .flatpickr-monthDropdown-months {
+    background: #1B4332 !important;
+    color: #fff !important;
+    appearance: none;
+  }
+  #booking-modal #fp-calendar .flatpickr-monthDropdown-months option {
+    background: #1B4332;
+    color: #fff;
+  }
+
+  /* Nav arrows */
+  #booking-modal #fp-calendar .flatpickr-prev-month,
+  #booking-modal #fp-calendar .flatpickr-next-month {
+    fill: #fff !important;
+    color: #fff !important;
+  }
+  #booking-modal #fp-calendar .flatpickr-prev-month svg,
+  #booking-modal #fp-calendar .flatpickr-next-month svg {
+    fill: #fff !important;
+  }
+  #booking-modal #fp-calendar .flatpickr-prev-month:hover,
+  #booking-modal #fp-calendar .flatpickr-next-month:hover {
+    color: #C9A15A;
+  }
+  #booking-modal #fp-calendar .flatpickr-prev-month:hover svg,
+  #booking-modal #fp-calendar .flatpickr-next-month:hover svg {
+    fill: #C9A15A !important;
+  }
+
+  /* Weekday labels row */
+  #booking-modal #fp-calendar .flatpickr-weekdays {
+    background: #1B4332 !important;
+    height: 32px;
+  }
+  #booking-modal #fp-calendar span.flatpickr-weekday {
+    background: #1B4332 !important;
+    color: #fff !important;
+    font-size: 90%;
+    font-weight: 500;
+  }
+
+  /* Day cells — hover */
+  #booking-modal #fp-calendar .flatpickr-day:hover,
+  #booking-modal #fp-calendar .flatpickr-day.prevMonthDay:hover,
+  #booking-modal #fp-calendar .flatpickr-day.nextMonthDay:hover {
+    background: #C9A15A !important;
+    border-color: #C9A15A !important;
+    color: #fff !important;
+  }
+
+  /* Selected start / end */
+  #booking-modal #fp-calendar .flatpickr-day.selected,
+  #booking-modal #fp-calendar .flatpickr-day.startRange,
+  #booking-modal #fp-calendar .flatpickr-day.endRange,
+  #booking-modal #fp-calendar .flatpickr-day.selected:hover,
+  #booking-modal #fp-calendar .flatpickr-day.startRange:hover,
+  #booking-modal #fp-calendar .flatpickr-day.endRange:hover {
+    background: #1B4332 !important;
+    border-color: #1B4332 !important;
+    color: #fff !important;
+  }
+
+  /* In-range days */
+  #booking-modal #fp-calendar .flatpickr-day.inRange {
+    background: #E9EFE9 !important;
+    border-color: #E9EFE9 !important;
+    color: #1B4332 !important;
+    box-shadow: -5px 0 0 #E9EFE9, 5px 0 0 #E9EFE9 !important;
+  }
+
+  /* Today marker */
+  #booking-modal #fp-calendar .flatpickr-day.today {
+    border-color: #C9A15A !important;
+  }
+  #booking-modal #fp-calendar .flatpickr-day.today:hover {
+    background: #C9A15A !important;
+    color: #fff !important;
+  }
+
+  /* Past / disabled days */
+  #booking-modal #fp-calendar .flatpickr-day.flatpickr-disabled,
+  #booking-modal #fp-calendar .flatpickr-day.flatpickr-disabled:hover {
+    color: rgba(38,40,31,0.2) !important;
+    cursor: not-allowed;
+    background: transparent !important;
+  }
+
+  /* Two-month layout on desktop */
+  @media (min-width: 640px) {
+    #booking-modal #fp-calendar .flatpickr-calendar.rangeMode {
+      width: auto;
+    }
+  }
+
+  /* -------------------------------------------------------
+     FIX: Force inline calendar to block flow (not float)
+     so it never escapes the left column and overlaps right.
+     position:static keeps it in normal flow — correct.
+     width/max-width removed so the calendar renders at its
+     natural two-month size without being squeezed.
+  ------------------------------------------------------- */
+  #booking-modal #fp-calendar .flatpickr-calendar.inline {
+    position: static !important;
+    display: block !important;
+    box-shadow: none !important;
+  }
+
+  /* -------------------------------------------------------
+     FIX: Left column gets enough room for two months (≈620px
+     natural width). Right column has a fixed minimum so it
+     doesn't collapse. max-w-5xl wrapper (1024px) means at
+     1280px viewport the left col is ≈680px — enough space.
+  ------------------------------------------------------- */
+  @media (min-width: 1024px) {
+    #modal-body-grid {
+      grid-template-columns: minmax(620px, 1.4fr) minmax(320px, 1fr);
+      gap: 48px;
+    }
+  }
+
+  /* At lg the wrapper can't be max-w-5xl (1024px) — that's
+     too tight once the left col needs 620px + gap + right col.
+     Switch to max-w-6xl (1152px) at the lg breakpoint. */
+  @media (min-width: 1024px) {
+    #modal-panel > div {
+      max-width: 72rem; /* 1152px = Tailwind max-w-6xl */
+    }
+  }
+
+  /* Footer bottom padding on mobile so sticky button never covers content */
+  @media (max-width: 767px) {
+    footer {
+      padding-bottom: 5rem; /* 80px — height of sticky button bar */
+    }
+  }
+
+  /* -------------------------------------------------------
+     GALLERY GRID — explicit grid-template-areas
+     4-col × 3-row desktop layout, no auto-placement
+     -------------------------------------------------------
+     Row 1: pool-main  pool-main  pool-night  campfire
+     Row 2: pool-main  pool-main  games       bbq
+     Row 3: private    private    private     breakfast
+  ------------------------------------------------------- */
+  @media (min-width: 768px) {
+    #gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 240px);
+      grid-template-areas:
+        "pool-main pool-main pool-night campfire"
+        "pool-main pool-main games      bbq"
+        "private   private   private    breakfast";
+      gap: 1rem;
+    }
+
+    #gallery-grid .gallery-pool-main  { grid-area: pool-main;  }
+    #gallery-grid .gallery-pool-night { grid-area: pool-night; }
+    #gallery-grid .gallery-campfire   { grid-area: campfire;   }
+    #gallery-grid .gallery-games      { grid-area: games;      }
+    #gallery-grid .gallery-bbq        { grid-area: bbq;        }
+    #gallery-grid .gallery-private    { grid-area: private;    }
+    #gallery-grid .gallery-breakfast  { grid-area: breakfast;  }
+  }
+
+  /* Mobile: drop back to plain single-column stack */
+  @media (max-width: 767px) {
+    #gallery-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    #gallery-grid .gallery-item {
+      height: 240px;
+      width: 100%;
+    }
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="src/main.js" type="module"></script>
+</body>
+</html>

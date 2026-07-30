@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forest: #1B4332;
+  --color-forestmid: #3A7D44;
+  --color-forestlight: #E9EFE9;
+  --color-gold: #C9A15A;
+  --color-goldlight: #EADFC5;
+  --color-ivory: #F8F4EC;
+  --color-charcoal: #26281F;
+
+  --font-display: "Fraunces", serif;
+  --font-sans: "Inter", sans-serif;
+}
