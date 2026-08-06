@@ -1692,6 +1692,12 @@
         </div><!-- /grid -->
       </div><!-- /max-w wrapper -->
     </div><!-- /scrollable body -->
+
+    <!-- reCAPTCHA v2 Invisible widget container.
+         Rendered programmatically by booking.js — kept hidden visually
+         but must exist in the DOM before grecaptcha.render() is called. -->
+    <div id="recaptcha-container" aria-hidden="true"></div>
+
   </div><!-- /modal -->
 
 
@@ -2060,6 +2066,13 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<!-- reCAPTCHA v2 Invisible — loaded async so it never blocks page render.
+     The widget is rendered programmatically in booking.js after the
+     RECAPTCHA_SITE_KEY is read from BOOKING_CONFIG.
+     onRecaptchaLoad is the global callback fired when the API is ready. -->
+<script src="https://www.google.com/recaptcha/api.js?onload=onRecaptchaLoad&render=explicit" async defer></script>
+
 <script src="src/main.js" type="module"></script>
 </body>
 </html>

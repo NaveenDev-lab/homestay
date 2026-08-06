@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "comment": "Vercel deployment config for Jeevika Haven. API functions live in /api, static files served from root.",
   "builds": [
     {
       "src": "api/**/*.js",

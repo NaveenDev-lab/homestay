@@ -29,9 +29,12 @@ export const BOOKING_CONFIG = {
   // TODO: set this when email submission is implemented
   EMAIL_SERVICE: null,
 
-  // ── reCAPTCHA (future use) ─────────────────────────────────────
-  // TODO: replace with real site key from Google reCAPTCHA console
-  RECAPTCHA_SITE_KEY: null,                // placeholder
+  // ── reCAPTCHA v2 Invisible ─────────────────────────────────────
+  // Public site key — safe to expose in the frontend.
+  // Get it from: https://www.google.com/recaptcha/admin
+  // Set type to "reCAPTCHA v2 — Invisible reCAPTCHA badge"
+  // TODO: replace with your real site key
+  RECAPTCHA_SITE_KEY: null,   // placeholder — set before going live
 
   // ── Misc ───────────────────────────────────────────────────────
   // Human-readable villa name used in messages

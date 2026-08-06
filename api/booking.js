@@ -19,35 +19,78 @@
 const { validatePayload, normalisePayload } = require('../server/middleware/validateBooking');
 const emailService = require('../server/email/interface');
 
+// ── reCAPTCHA verification ────────────────────────────────────────
+const RECAPTCHA_VERIFY_URL = 'https://www.google.com/recaptcha/api/siteverify';
+
+/**
+ * Verifies a reCAPTCHA token with Google's server-side API.
+ * Returns true on success, false on failure.
+ * If RECAPTCHA_SECRET_KEY is not set, verification is skipped (dev mode).
+ *
+ * @param {string|null} token
+ * @returns {Promise<boolean>}
+ */
+async function verifyRecaptcha(token) {
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+
+  // No secret key configured → skip verification (dev/test mode)
+  if (!secretKey) {
+    console.warn('[reCAPTCHA] RECAPTCHA_SECRET_KEY not set. Skipping verification.');
+    return true;
+  }
+
+  // Token must be present when secret key is configured
+  if (!token) {
+    console.warn('[reCAPTCHA] Token missing from request.');
+    return false;
+  }
+
+  try {
+    const params = new URLSearchParams({
+      secret:   secretKey,
+      response: token,
+    });
+
+    const res  = await fetch(`${RECAPTCHA_VERIFY_URL}?${params}`, { method: 'POST' });
+    const json = await res.json();
+
+    if (!json.success) {
+      console.warn('[reCAPTCHA] Verification failed. Error codes:', json['error-codes']);
+    }
+    return json.success === true;
+  } catch (err) {
+    console.error('[reCAPTCHA] Verification request failed:', err.message);
+    return false;
+  }
+}
+
 /**
  * Core booking handler — framework-agnostic.
- * Accepts a plain payload object, validates it, sends the email,
- * and returns a structured { status, body } result.
- *
- * @param {object} payload - raw request body
- * @returns {Promise<{ status: number, body: object }>}
  */
 async function handleBooking(payload) {
-  // 1. Validate
+  // 1. Validate booking data
   const validationError = validatePayload(payload);
   if (validationError) {
+    return { status: 400, body: { success: false, message: validationError } };
+  }
+
+  // 2. Verify reCAPTCHA token (skipped in dev if RECAPTCHA_SECRET_KEY not set)
+  const tokenValid = await verifyRecaptcha(payload.recaptchaToken || null);
+  if (!tokenValid) {
     return {
       status: 400,
-      body: { success: false, message: validationError },
+      body: { success: false, message: 'Verification failed. Please try again.' },
     };
   }
 
-  // 2. Normalise
+  // 3. Normalise
   const booking = normalisePayload(payload);
   console.log('[Booking API] Request received:', JSON.stringify(booking, null, 2));
 
-  // 3. Send admin notification email via the Email Service Interface.
-  //    The interface decides which provider to use (currently Resend).
-  //    To swap providers, update server/email/interface.js only.
+  // 4. Send admin notification email
   try {
     await emailService.sendAdminBookingNotification(booking);
   } catch (emailErr) {
-    // Log the detailed error server-side but return a safe message to the client.
     console.error('[Booking API] Email delivery failed:', emailErr.message);
     return {
       status: 500,
@@ -57,10 +100,7 @@ async function handleBooking(payload) {
 
   return {
     status: 200,
-    body: {
-      success: true,
-      message: 'Booking submitted successfully.',
-    },
+    body: { success: true, message: 'Booking submitted successfully.' },
   };
 }
 

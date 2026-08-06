@@ -1,17 +1,83 @@
 /**
  * booking.js
  * Modular booking system — data collection, validation,
- * API submission, loading state, success and error handling.
- *
- * To add email sending later: implement it inside api/booking.js
- * on the server. This file only calls the API endpoint — it never
- * sends email directly.
- *
- * To add reCAPTCHA later: call getRecaptchaToken() before fetch()
- * and attach the token to the payload. No other changes needed here.
+ * reCAPTCHA v2 Invisible, API submission, loading state,
+ * success and error handling.
  */
 
 import { BOOKING_CONFIG } from './booking.config.js';
+
+// ── API endpoint ──────────────────────────────────────────────────
+const BOOKING_API_URL = '/api/booking';
+
+// ── reCAPTCHA widget ──────────────────────────────────────────────
+// Widget ID assigned by grecaptcha.render() — needed for reset calls.
+let recaptchaWidgetId = null;
+
+/**
+ * Called by the reCAPTCHA script once the API is fully loaded.
+ * Renders an invisible widget into #recaptcha-container if a site
+ * key is configured. Exposed on window so the script's onload
+ * callback can reach it across the module boundary.
+ */
+window.onRecaptchaLoad = function onRecaptchaLoad() {
+  const siteKey = BOOKING_CONFIG.RECAPTCHA_SITE_KEY;
+  if (!siteKey) {
+    // No site key configured — reCAPTCHA disabled, form works without it.
+    console.warn('[reCAPTCHA] RECAPTCHA_SITE_KEY not set. Verification skipped.');
+    return;
+  }
+
+  const container = document.getElementById('recaptcha-container');
+  if (!container || recaptchaWidgetId !== null) return;
+
+  recaptchaWidgetId = window.grecaptcha.render(container, {
+    sitekey:  siteKey,
+    size:     'invisible',
+    badge:    'bottomright',
+    callback: () => {}, // resolved via Promise in getRecaptchaToken()
+  });
+};
+
+/**
+ * Executes the invisible reCAPTCHA and returns the token.
+ * If no site key is configured, resolves with null (bypasses check).
+ *
+ * @returns {Promise<string|null>}
+ */
+export function getRecaptchaToken() {
+  const siteKey = BOOKING_CONFIG.RECAPTCHA_SITE_KEY;
+
+  // No site key → skip reCAPTCHA entirely (dev/test mode)
+  if (!siteKey || recaptchaWidgetId === null) {
+    return Promise.resolve(null);
+  }
+
+  return new Promise((resolve, reject) => {
+    // Override the widget callback to capture the token
+    window.grecaptcha.reset(recaptchaWidgetId);
+    window.grecaptcha.execute(recaptchaWidgetId);
+
+    // Poll until the widget produces a response (max 30s)
+    const POLL_INTERVAL = 200;
+    const MAX_WAIT      = 30_000;
+    let   elapsed       = 0;
+
+    const poll = setInterval(() => {
+      const response = window.grecaptcha.getResponse(recaptchaWidgetId);
+      if (response) {
+        clearInterval(poll);
+        resolve(response);
+        return;
+      }
+      elapsed += POLL_INTERVAL;
+      if (elapsed >= MAX_WAIT) {
+        clearInterval(poll);
+        reject(new Error('reCAPTCHA timed out. Please try again.'));
+      }
+    }, POLL_INTERVAL);
+  });
+}
 
 // ── API endpoint ──────────────────────────────────────────────────
 // Relative path works on both Vercel and Hostinger since the server
@@ -110,26 +176,28 @@ export function setButtonReady(btn) {
 
 // ── API submission ────────────────────────────────────────────────
 /**
- * POSTs the booking data to the API endpoint.
- * Returns the parsed JSON response body.
- * Throws on network errors or non-2xx responses.
+ * Obtains a reCAPTCHA token (if configured), then POSTs all booking
+ * data to the API endpoint. Throws on validation, reCAPTCHA, network,
+ * or server errors.
  *
  * @param {object} data - output of collectBookingData()
  * @returns {Promise<{ success: boolean, message: string }>}
  */
 export async function submitBooking(data) {
-  // Build the payload — only fields the API expects
+  // 1. Get reCAPTCHA token (null if site key not configured)
+  const recaptchaToken = await getRecaptchaToken();
+
+  // 2. Build the payload
   const payload = {
-    arrival:      data.arrival,
-    departure:    data.departure,
-    adults:       data.adults,
-    children:     data.children,
-    childrenAges: data.childrenAges,
-    name:         data.name,
-    phone:        data.phone,
-    request:      data.request,
-    // reCAPTCHA token will be added here in the next step:
-    // recaptchaToken: await getRecaptchaToken(),
+    arrival:        data.arrival,
+    departure:      data.departure,
+    adults:         data.adults,
+    children:       data.children,
+    childrenAges:   data.childrenAges,
+    name:           data.name,
+    phone:          data.phone,
+    request:        data.request,
+    recaptchaToken, // null when site key not set — backend skips verification
   };
 
   const response = await fetch(BOOKING_API_URL, {
@@ -138,7 +206,6 @@ export async function submitBooking(data) {
     body:    JSON.stringify(payload),
   });
 
-  // Try to parse JSON regardless of status code (API always returns JSON)
   let json;
   try {
     json = await response.json();
@@ -147,7 +214,6 @@ export async function submitBooking(data) {
   }
 
   if (!response.ok || !json.success) {
-    // Use the server's message if available, otherwise a generic one
     const msg = (json && json.message) || `Server error: ${response.status}`;
     throw new Error(msg);
   }
