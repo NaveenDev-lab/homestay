@@ -8,9 +8,9 @@
 import { BOOKING_CONFIG } from './booking.config.js';
 
 // ── API endpoint ──────────────────────────────────────────────────
+// Relative path works on both Vercel and Hostinger since the server
+// serves the static site from the same origin as the API.
 const BOOKING_API_URL = '/api/booking';
-
-// ── reCAPTCHA widget ──────────────────────────────────────────────
 // Widget ID assigned by grecaptcha.render() — needed for reset calls.
 let recaptchaWidgetId = null;
 
@@ -78,11 +78,6 @@ export function getRecaptchaToken() {
     }, POLL_INTERVAL);
   });
 }
-
-// ── API endpoint ──────────────────────────────────────────────────
-// Relative path works on both Vercel and Hostinger since the server
-// serves the static site from the same origin as the API.
-const BOOKING_API_URL = '/api/booking';
 
 // ── Date formatting helper ────────────────────────────────────────
 export function fmtDate(isoStr) {
