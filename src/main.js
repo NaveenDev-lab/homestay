@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
    1. NAVBAR — scroll-aware background + colour swap
 ----------------------------------------------------------------- */
 const navbar      = document.getElementById('navbar');
-const logoText    = document.querySelectorAll('.navbar-logo-text, .navbar-logo-icon');
+const navbarLogo  = document.getElementById('navbar-logo');
 const navLinks    = document.querySelectorAll('.navbar-link');
 const hamburger   = document.getElementById('menu-open');
 
@@ -17,20 +17,21 @@ function applyNavbarState(scrolled) {
   if (scrolled) {
     navbar.classList.add('bg-ivory', 'shadow-md');
     navbar.classList.remove('bg-transparent');
-    logoText.forEach(el => el.classList.replace('text-white', 'text-forest'));
     navLinks.forEach(el => el.classList.replace('text-white', 'text-forest'));
     hamburger.classList.replace('text-white', 'text-forest');
+    // Solid background — no drop-shadow needed on logo
+    if (navbarLogo) navbarLogo.style.filter = 'none';
   } else {
     navbar.classList.remove('bg-ivory', 'shadow-md');
     navbar.classList.add('bg-transparent');
-    logoText.forEach(el => el.classList.replace('text-forest', 'text-white'));
     navLinks.forEach(el => el.classList.replace('text-forest', 'text-white'));
     hamburger.classList.replace('text-forest', 'text-white');
+    // Transparent over hero — drop-shadow keeps logo legible
+    if (navbarLogo) navbarLogo.style.filter = 'drop-shadow(0 1px 6px rgba(0,0,0,0.35))';
   }
 }
 
 // Set initial transparent state
-logoText.forEach(el => el.classList.add('text-white'));
 navLinks.forEach(el => el.classList.add('text-white'));
 hamburger.classList.add('text-white');
 navbar.classList.add('bg-transparent');
@@ -117,12 +118,12 @@ function goToSlide(next) {
   startZoom(next);
 
   // Dots
-  dots[prev].classList.remove('bg-gold');
+  dots[prev].classList.remove('bg-emerald');
   dots[prev].classList.add('bg-white/40');
   dots[prev].setAttribute('aria-selected', 'false');
 
   dots[next].classList.remove('bg-white/40');
-  dots[next].classList.add('bg-gold');
+  dots[next].classList.add('bg-emerald');
   dots[next].setAttribute('aria-selected', 'true');
 }
 
@@ -457,22 +458,33 @@ gsap.fromTo(
 /* =============================================================
    BOOKING MODAL — state, Flatpickr, steppers, validation,
    localStorage persistence, WhatsApp deep-link
+   Submission is delegated to src/booking.js so the method can
+   be switched (WhatsApp → Email) by changing booking.config.js only.
 ============================================================= */
 
-// TODO: replace with real host WhatsApp number (include country code, no + or spaces)
-const WA_NUMBER = '917306239291';
+import {
+  fmtDate,
+  collectBookingData,
+  validateBookingData,
+  submitBooking,
+  handleSubmitSuccess,
+  handleSubmitError,
+  setButtonLoading,
+  setButtonReady,
+} from './booking.js';
 
 /* -----------------------------------------------------------------
    Booking state — single source of truth
 ----------------------------------------------------------------- */
 const DEFAULT_STATE = {
-  arrival:    null,   // ISO date string 'YYYY-MM-DD' or null
-  departure:  null,
-  adults:     2,
-  children:   0,
-  name:       '',
-  phone:      '',
-  request:    '',
+  arrival:      null,   // ISO date string 'YYYY-MM-DD' or null
+  departure:    null,
+  adults:       2,
+  children:     0,
+  childrenAges: [],     // array of numbers or null per child, e.g. [8, null, 3]
+  name:         '',
+  phone:        '',
+  request:      '',
 };
 
 function loadState() {
@@ -505,22 +517,13 @@ const adultsDec      = document.getElementById('adults-dec');
 const adultsInc      = document.getElementById('adults-inc');
 const childrenDec    = document.getElementById('children-dec');
 const childrenInc    = document.getElementById('children-inc');
+const childrenAgesContainer = document.getElementById('children-ages-container');
 const nameInput      = document.getElementById('modal-name');
 const phoneInput     = document.getElementById('modal-phone');
 const requestInput   = document.getElementById('modal-request');
 const errorMsg       = document.getElementById('modal-error');
+const agesError      = document.getElementById('ages-error');
 const submitBtn      = document.getElementById('modal-submit');
-
-/* -----------------------------------------------------------------
-   Date formatting helper
------------------------------------------------------------------ */
-function fmtDate(isoStr) {
-  if (!isoStr) return '—';
-  const [y, m, d] = isoStr.split('-').map(Number);
-  const months = ['Jan','Feb','Mar','Apr','May','Jun',
-                  'Jul','Aug','Sep','Oct','Nov','Dec'];
-  return `${d} ${months[m - 1]} ${y}`;
-}
 
 /* -----------------------------------------------------------------
    Flatpickr inline range calendar
@@ -643,8 +646,91 @@ function hydrateUI() {
   requestInput.value        = bookingState.request;
   modalArrival.textContent   = fmtDate(bookingState.arrival);
   modalDeparture.textContent = fmtDate(bookingState.departure);
+  // Ensure childrenAges array is correctly sized for restored state
+  if (!Array.isArray(bookingState.childrenAges)) {
+    bookingState.childrenAges = [];
+  }
+  while (bookingState.childrenAges.length < bookingState.children) {
+    bookingState.childrenAges.push(null);
+  }
+  renderChildrenAges();
 }
 hydrateUI();
+
+/* -----------------------------------------------------------------
+   Children age inputs — rendered dynamically when children > 0.
+   Preserves existing age values when count changes: trimming from
+   the end on decrement, appending null on increment.
+----------------------------------------------------------------- */
+
+// Returns true if a stored age value is the unselected placeholder (null / '' / undefined)
+function isAgeMissing(val) {
+  return val === null || val === undefined || val === '';
+}
+
+function renderChildrenAges() {
+  const count = bookingState.children;
+  childrenAgesContainer.innerHTML = '';
+  agesError.classList.add('hidden');
+
+  if (count === 0) return;
+
+  for (let i = 0; i < count; i++) {
+    const selectId = `child-age-${i}`;
+    const savedAge = bookingState.childrenAges[i];
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'flex flex-col gap-1.5';
+
+    const label = document.createElement('label');
+    label.htmlFor     = selectId;
+    label.className   = 'text-charcoal text-sm font-medium';
+    label.textContent = `Child ${i + 1} Age`;
+
+    const select = document.createElement('select');
+    select.id        = selectId;
+    select.className = 'w-40 px-4 py-2.5 rounded-xl border border-charcoal/20 bg-white ' +
+                       'text-charcoal text-sm ' +
+                       'focus:outline-none focus:ring-2 focus:ring-forest/30 focus:border-forest ' +
+                       'transition-colors duration-150 cursor-pointer';
+
+    // Placeholder option
+    const placeholder = document.createElement('option');
+    placeholder.value    = '';
+    placeholder.disabled = true;
+    placeholder.selected = (savedAge === null || savedAge === undefined || savedAge === '');
+    placeholder.textContent = 'Select age';
+    select.appendChild(placeholder);
+
+    // Age options 0–17
+    for (let age = 0; age <= 17; age++) {
+      const opt = document.createElement('option');
+      opt.value = age;
+      opt.textContent = age === 0 ? '0 (Under 1)' : `${age}`;
+      if (savedAge !== null && savedAge !== undefined && savedAge !== '' && Number(savedAge) === age) {
+        opt.selected = true;
+      }
+      select.appendChild(opt);
+    }
+
+    select.addEventListener('change', () => {
+      const val = select.value;
+      bookingState.childrenAges[i] = val === '' ? null : Number(val);
+      saveState(bookingState);
+      // Clear error border and hide error once a valid selection is made
+      select.classList.remove('border-red-500');
+      select.classList.add('border-charcoal/20');
+      const anyMissing = bookingState.childrenAges
+        .slice(0, bookingState.children)
+        .some(a => isAgeMissing(a));
+      if (!anyMissing) agesError.classList.add('hidden');
+    });
+
+    wrapper.appendChild(label);
+    wrapper.appendChild(select);
+    childrenAgesContainer.appendChild(wrapper);
+  }
+}
 
 /* -----------------------------------------------------------------
    Stepper buttons
@@ -666,14 +752,22 @@ adultsInc.addEventListener('click', () => {
 childrenDec.addEventListener('click', () => {
   if (bookingState.children > 0) {
     bookingState.children--;
+    // Trim the ages array from the end — preserved values for remaining children
+    bookingState.childrenAges = bookingState.childrenAges.slice(0, bookingState.children);
     childrenCount.textContent = bookingState.children;
+    renderChildrenAges();
     saveState(bookingState);
   }
 });
 childrenInc.addEventListener('click', () => {
   if (bookingState.children < 10) {
     bookingState.children++;
+    // Extend the array with null for the new child — existing values untouched
+    if (bookingState.childrenAges.length < bookingState.children) {
+      bookingState.childrenAges.push(null);
+    }
     childrenCount.textContent = bookingState.children;
+    renderChildrenAges();
     saveState(bookingState);
   }
 });
@@ -762,6 +856,7 @@ function closeModal() {
     }
   }, { once: true });
   errorMsg.classList.add('hidden');
+  agesError.classList.add('hidden');
 }
 
 // Wire every "Reserve Your Stay" trigger across the page
@@ -792,34 +887,301 @@ document.addEventListener('keydown', e => {
 });
 
 /* -----------------------------------------------------------------
-   Submit — validate → build WhatsApp message → open URL
+   Submit — collect → validate → POST to API (via booking.js)
+   Guards against duplicate submissions with an in-flight flag.
+   On success: clears localStorage, resets state, redirects.
+   On error:   restores button, preserves all data.
 ----------------------------------------------------------------- */
-submitBtn.addEventListener('click', () => {
-  const { arrival, departure, adults, children, name, phone, request } = bookingState;
 
-  // Validate required fields
-  if (!arrival || !departure || !name.trim() || !phone.trim()) {
-    errorMsg.classList.remove('hidden');
-    errorMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+// In-flight guard — prevents duplicate API calls from multiple clicks
+let isSubmitting = false;
+
+/**
+ * Resets bookingState to defaults and re-hydrates the UI.
+ * Passed as a callback to handleSubmitSuccess() so the state
+ * object is wiped before the page navigates away.
+ */
+function resetBookingState() {
+  bookingState = Object.assign({}, DEFAULT_STATE, { childrenAges: [] });
+}
+
+submitBtn.addEventListener('click', async () => {
+  // Guard: ignore clicks while a request is already in flight
+  if (isSubmitting) return;
+
+  // 1. Collect
+  const data = collectBookingData(bookingState);
+
+  // 2. Client-side validation — failures never touch isSubmitting
+  const { valid, errorType } = validateBookingData(data, bookingState);
+
+  if (!valid) {
+    if (errorType === 'required') {
+      errorMsg.classList.remove('hidden');
+      errorMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } else if (errorType === 'ages') {
+      agesError.classList.remove('hidden');
+      agesError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      const agesArr = Array.isArray(bookingState.childrenAges) ? bookingState.childrenAges : [];
+      childrenAgesContainer.querySelectorAll('select').forEach((sel, i) => {
+        const missing = agesArr[i] === null || agesArr[i] === undefined || agesArr[i] === '';
+        if (missing) {
+          sel.classList.add('border-red-500');
+          sel.classList.remove('border-charcoal/20');
+        }
+      });
+    }
     return;
   }
+
+  // Hide all inline messages before each attempt
   errorMsg.classList.add('hidden');
+  agesError.classList.add('hidden');
+  document.getElementById('modal-success')?.classList.add('hidden');
+  document.getElementById('modal-api-error')?.classList.add('hidden');
 
-  const msg = [
-    'Hello Jeevika Haven,',
-    'I would like to check availability.',
-    '',
-    `Check-in: ${fmtDate(arrival)}`,
-    `Check-out: ${fmtDate(departure)}`,
-    `Adults: ${adults}`,
-    `Children: ${children}`,
-    `Name: ${name.trim()}`,
-    `Phone: ${phone.trim()}`,
-    `Special Request: ${request.trim() || 'None'}`,
-    '',
-    'Please let me know the availability.',
-  ].join('\n');
+  // 3. Lock submission + show loading state
+  isSubmitting = true;
+  setButtonLoading(submitBtn);
 
-  const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
-  window.open(url, '_blank', 'noopener,noreferrer');
+  // 4. Submit to API
+  try {
+    await submitBooking(data);
+    // On success: clear localStorage, reset state, redirect.
+    // Button is intentionally NOT restored here — the page is navigating away.
+    handleSubmitSuccess(data, resetBookingState);
+  } catch (err) {
+    // On failure: show error, restore button, unlock for retry.
+    handleSubmitError(err);
+    setButtonReady(submitBtn);
+    isSubmitting = false;
+  }
+  // No finally block — success leaves button disabled until redirect completes.
 });
+
+
+/* =============================================================
+   REVIEWS SECTION — data + render + scroll animation
+============================================================= */
+
+const reviews = [
+  {
+    name: "Prathush Kp",
+    initials: "PK",
+    avatarColor: "#1B4332",
+    context: null,
+    rating: 5,
+    text: "We had a wonderful stay at this homestay. The place was clean, comfortable, and thoughtfully maintained, making it feel like a home away from home. The hosts were extremely warm, helpful, and always available whenever we needed anything. The surroundings were peaceful and perfect for relaxing, and the overall experience was calm and refreshing. Highly recommended for anyone looking for a cozy, welcoming stay. Would definitely love to visit again.",
+    videoType: null,
+    videoUrl: null,
+  },
+  {
+    name: "Pushpa Poulose",
+    initials: "PP",
+    avatarColor: "#B5744A",
+    context: null,
+    rating: 5,
+    text: "Escape to serenity! This hidden gem blends old-world charm with modern luxury, nestled in lush greenery yet just a stone's throw from the city. Imagine unwinding in spacious rooms with attic views, lounging by the sparkling pool, or soaking in the tranquility. The ambience of the place, food arrangements, services extended, and the great company of our friends made it a perfect weekend getaway from the chaos — book now and experience bliss!",
+    videoType: null,
+    videoUrl: null,
+  },
+  {
+    name: "Vinuja Xavier",
+    initials: "VX",
+    avatarColor: "#5C7A5C",
+    context: "Holiday · Family",
+    rating: 5,
+    text: "It's a great place to stay with family and friends. We had the best experience staying there. Location is beautiful and close to nature. This place is very well maintained. We had complementary breakfast and food was yummy. Rooms were spacious and comfortable. The owner was extremely friendly and we will definitely want to come back. I would highly recommend this place.",
+    videoType: null,
+    videoUrl: null,
+  },
+  {
+    name: "Chitra Muralidharan",
+    initials: "CM",
+    avatarColor: "#8B6F47",
+    context: "Holiday · Friends",
+    rating: 5,
+    text: "An absolutely serene and picturesque escape, perfect for a relaxing getaway with friends or family. The quiet atmosphere, coupled with beautiful surroundings, makes it an ideal spot to unwind and recharge. Highly recommend for a tranquil, memorable staycation where you can truly connect with nature and loved ones.",
+    videoType: null,
+    videoUrl: null,
+  },
+  {
+    name: "Raji Joseph",
+    initials: "RJ",
+    avatarColor: "#3A7D44",
+    context: "Holiday · Friends",
+    rating: 5,
+    text: "I recently stayed at Jeevika Haven and it exceeded my expectations! The homestay was perfect for a fun get-together with friends and family. The pool was a highlight, and delicious homely food topped it up. Spacious rooms offered a comfortable stay amidst nature's serenity. A must-visit to unwind and rejuvenate, highly recommended!",
+    videoType: null,
+    videoUrl: null,
+  },
+  {
+    name: "Mathew Varghese",
+    initials: "MV",
+    avatarColor: "#6B4F3A",
+    context: "Holiday · Family",
+    rating: 5,
+    text: "Jeevika Haven – The Perfect Blend of Family Fun & Serenity. For those looking for an ideal spot for a family get-together or a peaceful retreat, Jeevika Haven offers both. With cozy accommodations and a warm atmosphere, it's perfect for making lasting memories. Plus, explore stunning scenic spots within just 3 km — nature's beauty is right at your doorstep.",
+    videoType: "placeholder",
+    videoUrl: null,
+  },
+];
+
+/* -----------------------------------------------------------------
+   Build one filled-star SVG string (forest green)
+----------------------------------------------------------------- */
+function starSVG() {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+              fill="#1B4332" class="w-4 h-4" aria-hidden="true">
+    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.966a1 1 0 0 0 .95.69h4.169
+             c.969 0 1.371 1.24.588 1.81l-3.374 2.452a1 1 0 0 0-.364 1.118l1.286 3.966
+             c.3.921-.755 1.688-1.54 1.118L10 15.347l-3.352 2.436c-.784.57-1.838-.197-1.539-1.118
+             l1.286-3.966a1 1 0 0 0-.364-1.118L2.657 9.393c-.783-.57-.38-1.81.588-1.81h4.169
+             a1 1 0 0 0 .95-.69l1.285-3.966Z"/>
+  </svg>`;
+}
+
+/* -----------------------------------------------------------------
+   renderReviews — carousel: builds cards, wires arrows + dots
+----------------------------------------------------------------- */
+function renderReviews() {
+  const track    = document.getElementById('reviews-track');
+  const dotsWrap = document.getElementById('reviews-dots');
+  const prevBtn  = document.getElementById('reviews-prev');
+  const nextBtn  = document.getElementById('reviews-next');
+  const header   = document.getElementById('reviews-header');
+  const wrap     = document.getElementById('reviews-carousel-wrap');
+
+  if (!track) return;
+
+  // Card width: 340px on desktop, ~85vw on mobile (so ~1.1 cards peek)
+  const CARD_W_PX  = 340;
+  const CARD_GAP   = 20; // gap-5 = 20px
+  const cardStep   = CARD_W_PX + CARD_GAP;
+
+  track.innerHTML   = '';
+  dotsWrap.innerHTML = '';
+
+  /* ---- Build cards ---- */
+  reviews.forEach((review, idx) => {
+    const li = document.createElement('li');
+    li.className = 'review-card bg-white rounded-2xl overflow-hidden shadow-sm flex flex-col ' +
+                   'transition-[box-shadow] duration-300 ease-out hover:shadow-xl shrink-0';
+    li.style.cssText = `width: min(${CARD_W_PX}px, 85vw); scroll-snap-align: start;`;
+
+    if (review.videoType === 'placeholder') {
+      li.innerHTML = `
+        <div class="relative flex items-center justify-center h-48"
+             style="background: linear-gradient(135deg,#1B4332 0%,#3A7D44 100%);">
+          <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border-2 border-white/50">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                 class="w-7 h-7 ml-1" fill="#fff" aria-hidden="true">
+              <path d="M8 5.14v14l11-7-11-7Z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="p-6 flex flex-col items-center text-center flex-1 justify-center gap-3">
+          <div class="w-11 h-11 rounded-full flex items-center justify-center shrink-0 font-bold text-white text-sm"
+               style="background-color:${review.avatarColor};">${review.initials}</div>
+          <div>
+            <p class="text-charcoal font-semibold text-sm">${review.name}</p>
+            ${review.context ? `<p class="text-charcoal/50 text-xs mt-0.5">${review.context}</p>` : ''}
+          </div>
+          <p class="text-charcoal/50 text-xs italic">Video review coming soon</p>
+        </div>`;
+    } else {
+      const stars = Array.from({ length: review.rating }, () => starSVG()).join('');
+      li.innerHTML = `
+        <div class="p-6 flex flex-col gap-4 flex-1">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full flex items-center justify-center shrink-0
+                        font-bold text-white text-sm leading-none"
+                 style="background-color:${review.avatarColor};">${review.initials}</div>
+            <div class="min-w-0">
+              <p class="text-charcoal font-semibold text-sm leading-snug">${review.name}</p>
+              ${review.context ? `<p class="text-charcoal/50 text-xs mt-0.5">${review.context}</p>` : ''}
+            </div>
+          </div>
+          <div class="flex items-center gap-0.5" role="img" aria-label="${review.rating} out of 5 stars">
+            ${stars}
+          </div>
+          <p class="text-charcoal/70 text-sm leading-relaxed flex-1">${review.text}</p>
+        </div>`;
+    }
+
+    track.appendChild(li);
+
+    /* ---- Dot ---- */
+    const dot = document.createElement('button');
+    dot.dataset.dot = idx;
+    dot.setAttribute('aria-label', `Go to review ${idx + 1}`);
+    dot.className = 'w-2 h-2 rounded-full transition-all duration-300 ' +
+                    (idx === 0 ? 'bg-forest scale-125' : 'bg-charcoal/20');
+    dot.addEventListener('click', () => {
+      track.scrollTo({ left: idx * cardStep, behavior: 'smooth' });
+    });
+    dotsWrap.appendChild(dot);
+  });
+
+  /* ---- Arrow state helper ---- */
+  function updateArrows() {
+    if (!prevBtn || !nextBtn) return;
+    prevBtn.disabled = track.scrollLeft <= 4;
+    // Account for sub-pixel rounding with a small threshold
+    const atEnd = track.scrollLeft >= track.scrollWidth - track.clientWidth - 4;
+    nextBtn.disabled = atEnd;
+  }
+
+  /* ---- Active dot helper ---- */
+  function updateDots() {
+    const idx = Math.round(track.scrollLeft / cardStep);
+    dotsWrap.querySelectorAll('button').forEach((d, i) => {
+      if (i === idx) {
+        d.classList.remove('bg-charcoal/20');
+        d.classList.add('bg-forest', 'scale-125');
+      } else {
+        d.classList.remove('bg-forest', 'scale-125');
+        d.classList.add('bg-charcoal/20');
+      }
+    });
+  }
+
+  /* ---- Scroll listener ---- */
+  track.addEventListener('scroll', () => {
+    updateArrows();
+    updateDots();
+  }, { passive: true });
+
+  /* ---- Arrow clicks ---- */
+  if (prevBtn) prevBtn.addEventListener('click', () => {
+    track.scrollBy({ left: -cardStep, behavior: 'smooth' });
+  });
+  if (nextBtn) nextBtn.addEventListener('click', () => {
+    track.scrollBy({ left: cardStep, behavior: 'smooth' });
+  });
+
+  // Initial arrow state
+  updateArrows();
+
+  /* ---- Section entrance animation (header + carousel as one unit) ---- */
+  [header, wrap].forEach(el => {
+    if (!el) return;
+    gsap.fromTo(
+      el,
+      { y: 30, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.85,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '#reviews',
+          start: 'top 85%',
+          toggleActions: 'play reverse play reverse',
+        },
+      }
+    );
+  });
+}
+
+renderReviews();

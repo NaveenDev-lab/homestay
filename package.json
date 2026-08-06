@@ -1,18 +1,23 @@
 {
   "name": "jeevika-haven",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Jeevika Haven private pool villa homestay website",
+  "main": "server/index.js",
   "scripts": {
-  "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-  "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify"
-},
+    "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "server": "node server/index.js",
+    "server:dev": "nodemon server/index.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.3",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14",
     "tailwindcss": "^4.3.3"
   },
   "dependencies": {

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Request Received — Jeevika Haven Homestay</title>
+  <meta name="description" content="Your booking request for Jeevika Haven private pool villa has been received. Our team will contact you shortly to confirm your stay.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="dist/output.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Animated checkmark circle */
+    .check-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: #DDEEE5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+    }
+
+    /* Pulse ring behind checkmark */
+    .check-ring {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid #1F6F4F;
+      opacity: 0;
+      animation: ringPulse 2.4s ease-out 0.6s infinite;
+    }
+
+    @keyframes ringPulse {
+      0%   { transform: scale(1);   opacity: 0.5; }
+      100% { transform: scale(1.7); opacity: 0; }
+    }
+
+    /* Touch-friendly contact buttons */
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px 24px;
+      border-radius: 9999px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      text-decoration: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      min-height: 52px; /* minimum touch target */
+    }
+    .contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .contact-btn:active {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="font-sans text-charcoal bg-ivory antialiased min-h-screen flex flex-col">
+
+  <!-- ── Minimal header ─────────────────────────────────────────── -->
+  <header class="w-full px-6 py-5 flex justify-center border-b border-charcoal/8">
+    <a href="index.html" aria-label="Jeevika Haven — return to homepage">
+      <img
+        src="images/jeevika-logo-full.png"
+        alt="Jeevika Haven"
+        class="h-9 w-auto max-w-[180px] block"
+      >
+    </a>
+  </header>
+
+  <!-- ── Main content ───────────────────────────────────────────── -->
+  <main class="flex-1 flex items-center justify-center px-6 py-16 md:py-24">
+    <div class="w-full max-w-lg text-center">
+
+      <!-- Success indicator -->
+      <div class="relative inline-flex items-center justify-center mb-2" aria-hidden="true">
+        <div class="check-ring"></div>
+        <div class="check-circle relative z-10">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+               fill="none" stroke="#1F6F4F" stroke-width="2.2"
+               stroke-linecap="round" stroke-linejoin="round"
+               class="w-9 h-9" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Heading group -->
+      <div id="ty-heading" class="opacity-0">
+        <h1 class="font-display text-4xl sm:text-5xl text-charcoal leading-tight mb-3">
+          Thank You!
+        </h1>
+        <p class="text-lg sm:text-xl text-emerald font-medium mb-6">
+          Your booking request has been received successfully.
+        </p>
+        <p class="text-charcoal/65 text-base leading-relaxed max-w-md mx-auto mb-10">
+          Thank you for choosing Jeevika Haven Homestay. Our team will review
+          your booking request and contact you shortly to confirm your stay.
+        </p>
+      </div>
+
+      <!-- Divider -->
+      <div id="ty-contact" class="opacity-0">
+        <div class="w-12 h-px bg-charcoal/15 mx-auto mb-10"></div>
+
+        <!-- Assistance section -->
+        <p class="text-sm font-semibold uppercase tracking-[0.15em] text-charcoal/50 mb-6">
+          Need immediate assistance?
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+
+          <!-- Call button -->
+          <!-- TODO: replace VILLA_PHONE with real number from booking.config.js -->
+          <a href="tel:+919447664261"
+             class="contact-btn bg-forest text-white"
+             aria-label="Call Jeevika Haven">
+            <!-- Phone icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                 fill="none" stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round"
+                 class="w-5 h-5 shrink-0" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.86 19.86 0 0 1 3.09 5.18
+                       2 2 0 0 1 5.08 3h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81
+                       a2 2 0 0 1-.45 2.11L9.09 10.91a16 16 0 0 0 6 6l1.27-1.27
+                       a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/>
+            </svg>
+            <span>Call Us</span>
+          </a>
+
+          <!-- WhatsApp button -->
+          <!-- TODO: replace WHATSAPP_NUMBER with value from booking.config.js -->
+          <a href="https://wa.me/917306239291"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="contact-btn bg-[#25D366] text-white"
+             aria-label="Chat on WhatsApp">
+            <!-- WhatsApp icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                 fill="currentColor" class="w-5 h-5 shrink-0" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148
+                       -.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075
+                       -.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059
+                       -.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174
+                       .198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612
+                       -.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01
+                       -.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462
+                       1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306
+                       1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719
+                       2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.096.54 4.064 1.482 5.785L0 24
+                       l6.357-1.466A11.942 11.942 0 0 0 12 24c6.627 0 12-5.373 12-12
+                       S18.627 0 12 0zm0 21.818a9.796 9.796 0 0 1-5.007-1.375l-.36-.213
+                       -3.724.859.896-3.617-.235-.372A9.795 9.795 0 0 1 2.182 12
+                       C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12
+                       21.818 17.43 17.43 21.818 12 21.818z"/>
+            </svg>
+            <span>WhatsApp</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- Back to home -->
+      <div id="ty-back" class="opacity-0 mt-10">
+        <a href="index.html"
+           class="inline-flex items-center gap-2 px-8 py-3.5 rounded-full
+                  bg-emerald text-white font-semibold text-sm tracking-wide
+                  hover:bg-emerald/80 transition-colors duration-200">
+          <!-- Arrow left -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round"
+               class="w-4 h-4" aria-hidden="true">
+            <line x1="19" y1="12" x2="5" y2="12"/>
+            <polyline points="12 19 5 12 12 5"/>
+          </svg>
+          Back to Home
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────────── -->
+  <footer class="w-full px-6 py-6 text-center border-t border-charcoal/8">
+    <p class="text-xs text-charcoal/35">
+      &copy; 2026 Jeevika Haven Homestay. All rights reserved.
+    </p>
+  </footer>
+
+  <!-- ── Scripts ────────────────────────────────────────────────── -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    // Staggered entrance animations — consistent with the main site
+    gsap.fromTo(
+      '#ty-heading',
+      { y: 28, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.9, ease: 'power2.out', delay: 0.25 }
+    );
+    gsap.fromTo(
+      '#ty-contact',
+      { y: 22, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.85, ease: 'power2.out', delay: 0.55 }
+    );
+    gsap.fromTo(
+      '#ty-back',
+      { y: 18, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out', delay: 0.8 }
+    );
+  </script>
+
+</body>
+</html>

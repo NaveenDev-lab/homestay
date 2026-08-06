@@ -27,29 +27,14 @@
     >
 
       <!-- Logo -->
-      <a href="#" class="flex items-center gap-2.5 group" aria-label="Jeevika Haven — home">
-        <!-- 4-petal leaf/flower SVG (currentColor) -->
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 32 32"
-          class="w-8 h-8 navbar-logo-icon transition-colors duration-300"
-          aria-hidden="true"
-          fill="currentColor"
+      <a href="#" class="flex items-center" aria-label="Jeevika Haven — home">
+        <img
+          id="navbar-logo"
+          src="images/jeevika-logo-full.png"
+          alt="Jeevika Haven"
+          class="h-9 md:h-10 w-auto max-w-[180px] transition-[filter] duration-300 block"
+          style="filter: drop-shadow(0 1px 6px rgba(0,0,0,0.35));"
         >
-          <!-- top petal -->
-          <path d="M16 15C16 15 13 9 16 3C19 9 16 15 16 15Z"/>
-          <!-- bottom petal -->
-          <path d="M16 17C16 17 19 23 16 29C13 23 16 17 16 17Z"/>
-          <!-- left petal -->
-          <path d="M15 16C15 16 9 19 3 16C9 13 15 16 15 16Z"/>
-          <!-- right petal -->
-          <path d="M17 16C17 16 23 13 29 16C23 19 17 16 17 16Z"/>
-          <!-- centre dot -->
-          <circle cx="16" cy="16" r="2"/>
-        </svg>
-        <span class="font-display text-xl leading-none navbar-logo-text transition-colors duration-300">
-          Jeevika <span class="text-gold">Haven</span>
-        </span>
       </a>
 
       <!-- Desktop nav -->
@@ -63,7 +48,7 @@
         </ul>
         <a
           href="#contact"
-          class="ml-2 px-5 py-2.5 rounded-full bg-gold text-white text-sm font-semibold tracking-wide hover:bg-amber-600 transition-colors duration-200 whitespace-nowrap"
+          class="ml-2 px-5 py-2.5 rounded-full bg-emerald text-white text-sm font-semibold tracking-wide hover:bg-emerald/80 transition-colors duration-200 whitespace-nowrap"
         >
           Reserve Your Stay
         </a>
@@ -105,28 +90,25 @@
       </button>
 
       <!-- Logo inside overlay -->
-      <div class="mb-10 flex items-center gap-2.5 text-white">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-8 h-8" aria-hidden="true" fill="currentColor">
-          <path d="M16 15C16 15 13 9 16 3C19 9 16 15 16 15Z"/>
-          <path d="M16 17C16 17 19 23 16 29C13 23 16 17 16 17Z"/>
-          <path d="M15 16C15 16 9 19 3 16C9 13 15 16 15 16Z"/>
-          <path d="M17 16C17 16 23 13 29 16C23 19 17 16 17 16Z"/>
-          <circle cx="16" cy="16" r="2"/>
-        </svg>
-        <span class="font-display text-xl leading-none">Jeevika <span class="text-gold">Haven</span></span>
+      <div class="mb-10">
+        <img
+          src="images/jeevika-logo-full.png"
+          alt="Jeevika Haven"
+          class="h-10 w-auto"
+        >
       </div>
 
       <ul class="flex flex-col items-center gap-6 list-none m-0 p-0 text-center">
-        <li><a href="#villa"      class="mobile-nav-link font-display text-3xl text-white hover:text-gold transition-colors duration-200">The Villa</a></li>
-        <li><a href="#amenities"  class="mobile-nav-link font-display text-3xl text-white hover:text-gold transition-colors duration-200">Amenities</a></li>
-        <li><a href="#gallery"    class="mobile-nav-link font-display text-3xl text-white hover:text-gold transition-colors duration-200">Gallery</a></li>
-        <li><a href="#nearby"     class="mobile-nav-link font-display text-3xl text-white hover:text-gold transition-colors duration-200">Nearby</a></li>
-        <li><a href="#contact"    class="mobile-nav-link font-display text-3xl text-white hover:text-gold transition-colors duration-200">Contact</a></li>
+        <li><a href="#villa"      class="mobile-nav-link font-display text-3xl text-white hover:text-emerald transition-colors duration-200">The Villa</a></li>
+        <li><a href="#amenities"  class="mobile-nav-link font-display text-3xl text-white hover:text-emerald transition-colors duration-200">Amenities</a></li>
+        <li><a href="#gallery"    class="mobile-nav-link font-display text-3xl text-white hover:text-emerald transition-colors duration-200">Gallery</a></li>
+        <li><a href="#nearby"     class="mobile-nav-link font-display text-3xl text-white hover:text-emerald transition-colors duration-200">Nearby</a></li>
+        <li><a href="#contact"    class="mobile-nav-link font-display text-3xl text-white hover:text-emerald transition-colors duration-200">Contact</a></li>
       </ul>
 
       <a
         href="#contact"
-        class="mobile-nav-link mt-10 px-8 py-3 rounded-full bg-gold text-white font-semibold tracking-wide hover:bg-amber-600 transition-colors duration-200"
+        class="mobile-nav-link mt-10 px-8 py-3 rounded-full bg-emerald text-white font-semibold tracking-wide hover:bg-emerald/80 transition-colors duration-200"
       >
         Reserve Your Stay
       </a>
@@ -143,35 +125,42 @@
     <div id="hero-slides" class="absolute inset-0" aria-hidden="true">
       <div class="hero-slide absolute inset-0 opacity-100" data-index="0">
         <img
-          src="images/hero-exterior.jpg"
-          alt="Exterior view of Jeevika Haven villa surrounded by lush greenery"
-          class="hero-slide-img w-full h-full object-cover scale-100"
+          src="images/pool-main.jpg"
+          alt="Private swimming pool at Jeevika Haven with garden views"
+          class="hero-slide-img w-full h-full object-cover"
         >
       </div>
       <div class="hero-slide absolute inset-0 opacity-0" data-index="1">
         <img
-          src="images/pool-main.jpg"
-          alt="Private swimming pool at Jeevika Haven with garden views"
-          class="hero-slide-img w-full h-full object-cover scale-100"
+          src="images/hero-exterior.jpg"
+          alt="Exterior view of Jeevika Haven villa surrounded by lush greenery"
+          class="hero-slide-img w-full h-full object-cover"
         >
       </div>
       <div class="hero-slide absolute inset-0 opacity-0" data-index="2">
         <img
-          src="images/campfire.jpg"
-          alt="Campfire circle in the garden at Jeevika Haven at night"
-          class="hero-slide-img w-full h-full object-cover scale-100"
+          src="images/hero-aerial.jpg"
+          alt="Aerial view of Jeevika Haven villa nestled in the green forest of Kombanad"
+          class="hero-slide-img w-full h-full object-cover"
         >
       </div>
       <div class="hero-slide absolute inset-0 opacity-0" data-index="3">
         <img
           src="images/private-main.jpg"
           alt="Private interior living space of Jeevika Haven villa"
-          class="hero-slide-img w-full h-full object-cover scale-100"
+          class="hero-slide-img w-full h-full object-cover"
         >
       </div>
     </div>
 
-    <!-- Gradient overlay — transparent at top, dark forest at bottom -->
+    <!-- Full-coverage subtle dim layer for consistent text legibility across all slides -->
+    <div
+      class="absolute inset-0 pointer-events-none"
+      style="background: rgba(15,30,22,0.25);"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Gradient overlay — stronger darkening at bottom for CTA text -->
     <div
       class="absolute inset-0 pointer-events-none"
       style="background: linear-gradient(to bottom, transparent 0%, transparent 30%, rgba(27,67,50,0.55) 60%, rgba(27,67,50,0.88) 100%);"
@@ -186,7 +175,7 @@
           <!-- Location label -->
           <p
             id="hero-label"
-            class="hero-animate text-gold text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] mb-4 opacity-0"
+            class="hero-animate text-emerald text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] mb-4 opacity-0"
           >
             Private Pool Villa · Kombanad, Ernakulam
           </p>
@@ -195,15 +184,17 @@
           <h1
             id="hero-headline"
             class="hero-animate font-display text-white text-4xl sm:text-5xl lg:text-6xl leading-[1.1] mb-6 opacity-0"
+            style="text-shadow: 0 2px 12px rgba(0,0,0,0.4);"
           >
             Luxury, Privacy &amp; Nature —<br>
-            <span class="text-gold">Entirely Yours.</span>
+            <span class="text-emerald">Entirely Yours.</span>
           </h1>
 
           <!-- Subline -->
           <p
             id="hero-subline"
             class="hero-animate text-white/85 text-base sm:text-lg leading-relaxed mb-8 max-w-xl opacity-0"
+            style="text-shadow: 0 2px 12px rgba(0,0,0,0.4);"
           >
             A four-bedroom private villa with its own pool, garden and campfire circle,
             tucked into the green quiet of Kombanad — twenty minutes from Cochin,
@@ -216,12 +207,12 @@
             <div class="relative inline-flex items-center justify-center">
               <!-- Pulsing ring -->
               <span
-                class="absolute inset-0 rounded-full bg-gold/40 animate-ping"
+                class="absolute inset-0 rounded-full bg-emerald/40 animate-ping"
                 aria-hidden="true"
               ></span>
               <a
                 href="#contact"
-                class="relative px-7 py-3.5 rounded-full bg-gold text-white font-semibold text-sm tracking-wide hover:bg-amber-600 transition-colors duration-200 whitespace-nowrap"
+                class="relative px-7 py-3.5 rounded-full bg-emerald text-white font-semibold text-sm tracking-wide hover:bg-emerald/80 transition-colors duration-200 whitespace-nowrap"
               >
                 Reserve Your Stay
               </a>
@@ -247,7 +238,7 @@
       role="tablist"
       aria-label="Slideshow navigation"
     >
-      <button role="tab" aria-selected="true"  aria-label="Slide 1" data-dot="0" class="slide-dot w-2 h-2 rounded-full bg-gold transition-all duration-300"></button>
+      <button role="tab" aria-selected="true"  aria-label="Slide 1" data-dot="0" class="slide-dot w-2 h-2 rounded-full bg-emerald transition-all duration-300"></button>
       <button role="tab" aria-selected="false" aria-label="Slide 2" data-dot="1" class="slide-dot w-2 h-2 rounded-full bg-white/40 transition-all duration-300"></button>
       <button role="tab" aria-selected="false" aria-label="Slide 3" data-dot="2" class="slide-dot w-2 h-2 rounded-full bg-white/40 transition-all duration-300"></button>
       <button role="tab" aria-selected="false" aria-label="Slide 4" data-dot="3" class="slide-dot w-2 h-2 rounded-full bg-white/40 transition-all duration-300"></button>
@@ -285,7 +276,7 @@
 
         <!-- Text column -->
         <div id="villa-text" class="opacity-0">
-          <p class="text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3">
+          <p class="text-emerald text-xs font-semibold uppercase tracking-[0.2em] mb-3">
             The Villa
           </p>
           <h2 class="font-display text-charcoal text-3xl sm:text-4xl lg:text-5xl leading-[1.15] mb-6">
@@ -315,7 +306,7 @@
 
       <!-- Section header -->
       <div class="text-center mb-14 md:mb-16">
-        <p class="text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3">
+        <p class="text-emerald text-xs font-semibold uppercase tracking-[0.2em] mb-3">
           Why Jeevika Haven
         </p>
         <h2 class="font-display text-charcoal text-3xl sm:text-4xl lg:text-5xl leading-[1.15]">
@@ -478,7 +469,7 @@
 
       <!-- Header -->
       <div class="text-center mb-14 md:mb-16">
-        <p class="text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3">The Spaces</p>
+        <p class="text-emerald text-xs font-semibold uppercase tracking-[0.2em] mb-3">The Spaces</p>
         <h2 class="font-display text-charcoal text-3xl sm:text-4xl lg:text-5xl leading-[1.15]">
           Rooms Built for Rest
         </h2>
@@ -563,7 +554,7 @@
 
       <!-- Header -->
       <div class="text-center mb-14 md:mb-16">
-        <p class="text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3">The Experience</p>
+        <p class="text-emerald text-xs font-semibold uppercase tracking-[0.2em] mb-3">The Experience</p>
         <h2 class="font-display text-white text-3xl sm:text-4xl lg:text-5xl leading-[1.15]">
           Moments You'll Replay
         </h2>
@@ -742,6 +733,100 @@
           </button>
         </li>
 
+        <!-- 8 — Window nook -->
+        <li class="gallery-item gallery-window-nook overflow-hidden rounded-2xl relative group">
+          <button
+            class="w-full h-full block cursor-zoom-in"
+            data-src="images/gallery-window-nook.jpg"
+            data-caption="A Quiet Corner to Read"
+            aria-label="Open image: A Quiet Corner to Read"
+          >
+            <img
+              src="images/gallery-window-nook.jpg"
+              alt="A Quiet Corner to Read — cosy window nook inside Jeevika Haven villa"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            >
+            <span class="gallery-caption absolute bottom-0 left-0 right-0 px-5 py-3
+                         bg-gradient-to-t from-forest/80 to-transparent
+                         text-white text-sm font-medium opacity-0 group-hover:opacity-100
+                         transition-opacity duration-300">
+              A Quiet Corner to Read
+            </span>
+          </button>
+        </li>
+
+        <!-- 9 — Wardrobe nook -->
+        <li class="gallery-item gallery-wardrobe-nook overflow-hidden rounded-2xl relative group">
+          <button
+            class="w-full h-full block cursor-zoom-in"
+            data-src="images/gallery-wardrobe-nook.jpg"
+            data-caption="Thoughtful Details Throughout"
+            aria-label="Open image: Thoughtful Details Throughout"
+          >
+            <img
+              src="images/gallery-wardrobe-nook.jpg"
+              alt="Thoughtful Details Throughout — wardrobe and storage nook at Jeevika Haven"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            >
+            <span class="gallery-caption absolute bottom-0 left-0 right-0 px-5 py-3
+                         bg-gradient-to-t from-forest/80 to-transparent
+                         text-white text-sm font-medium opacity-0 group-hover:opacity-100
+                         transition-opacity duration-300">
+              Thoughtful Details Throughout
+            </span>
+          </button>
+        </li>
+
+        <!-- 10 — Bedroom 2 -->
+        <li class="gallery-item gallery-bedroom-2 overflow-hidden rounded-2xl relative group">
+          <button
+            class="w-full h-full block cursor-zoom-in"
+            data-src="images/gallery-bedroom-2.jpg"
+            data-caption="Another Angle, Same Comfort"
+            aria-label="Open image: Another Angle, Same Comfort"
+          >
+            <img
+              src="images/gallery-bedroom-2.jpg"
+              alt="Another Angle, Same Comfort — second view of a bedroom at Jeevika Haven"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            >
+            <span class="gallery-caption absolute bottom-0 left-0 right-0 px-5 py-3
+                         bg-gradient-to-t from-forest/80 to-transparent
+                         text-white text-sm font-medium opacity-0 group-hover:opacity-100
+                         transition-opacity duration-300">
+              Another Angle, Same Comfort
+            </span>
+          </button>
+        </li>
+
+        <!-- 11 — Pool gazebo day -->
+        <li class="gallery-item gallery-pool-gazebo overflow-hidden rounded-2xl relative group">
+          <button
+            class="w-full h-full block cursor-zoom-in"
+            data-src="images/gallery-pool-gazebo-day.jpg"
+            data-caption="Poolside, Any Time of Day"
+            aria-label="Open image: Poolside, Any Time of Day"
+          >
+            <img
+              src="images/gallery-pool-gazebo-day.jpg"
+              alt="Poolside, Any Time of Day — gazebo and pool area at Jeevika Haven in daylight"
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            >
+            <span class="gallery-caption absolute bottom-0 left-0 right-0 px-5 py-3
+                         bg-gradient-to-t from-forest/80 to-transparent
+                         text-white text-sm font-medium opacity-0 group-hover:opacity-100
+                         transition-opacity duration-300">
+              Poolside, Any Time of Day
+            </span>
+          </button>
+        </li>
+
+        <!-- 12 removed — gallery-villa-exterior-day.jpg was low resolution -->
+
       </ul>
     </div>
   </section>
@@ -755,7 +840,7 @@
 
       <!-- Header -->
       <div class="text-center mb-14 md:mb-16">
-        <p class="text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3">At Your Service</p>
+        <p class="text-emerald text-xs font-semibold uppercase tracking-[0.2em] mb-3">At Your Service</p>
         <h2 class="font-display text-charcoal text-3xl sm:text-4xl lg:text-5xl leading-[1.15]">
           Everything, Already Here
         </h2>
@@ -925,7 +1010,7 @@
 
       <!-- Header -->
       <div class="text-center mb-14 md:mb-16">
-        <p class="text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3">Nearby</p>
+        <p class="text-emerald text-xs font-semibold uppercase tracking-[0.2em] mb-3">Nearby</p>
         <h2 class="font-display text-charcoal text-3xl sm:text-4xl lg:text-5xl leading-[1.15] mb-4">
           Worth the Detour
         </h2>
@@ -1097,6 +1182,73 @@
 
 
   <!-- ============================================================
+       REVIEWS SECTION
+  ============================================================ -->
+  <section id="reviews" class="py-20 md:py-28 bg-forestlight overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+      <!-- Header -->
+      <div id="reviews-header" class="text-center mb-10 opacity-0">
+        <p class="text-emerald text-xs font-semibold uppercase tracking-[0.2em] mb-3">Guest Reviews</p>
+        <h2 class="font-display text-charcoal text-3xl sm:text-4xl lg:text-5xl leading-[1.15]">
+          What Our Guests Say
+        </h2>
+      </div>
+
+      <!-- Carousel wrapper (relative so arrow buttons can be absolutely positioned) -->
+      <div id="reviews-carousel-wrap" class="relative opacity-0">
+
+        <!-- Prev arrow (hidden on mobile) -->
+        <button
+          id="reviews-prev"
+          aria-label="Previous reviews"
+          class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5
+                 z-10 w-11 h-11 rounded-full bg-white border border-forest/30 shadow-md
+                 items-center justify-center text-forest
+                 hover:bg-forestlight transition-colors duration-200
+                 disabled:opacity-30 disabled:cursor-not-allowed"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+               class="w-5 h-5" aria-hidden="true">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+
+        <!-- Next arrow (hidden on mobile) -->
+        <button
+          id="reviews-next"
+          aria-label="Next reviews"
+          class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-5
+                 z-10 w-11 h-11 rounded-full bg-white border border-forest/30 shadow-md
+                 items-center justify-center text-forest
+                 hover:bg-forestlight transition-colors duration-200
+                 disabled:opacity-30 disabled:cursor-not-allowed"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+               class="w-5 h-5" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </button>
+
+        <!-- Scrollable track — cards injected by JS -->
+        <ul
+          id="reviews-track"
+          class="flex gap-5 list-none m-0 p-0 pb-2 overflow-x-auto"
+          style="scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none;"
+        ></ul>
+
+      </div><!-- /carousel-wrap -->
+
+      <!-- Dot indicators -->
+      <div id="reviews-dots" class="flex justify-center gap-2 mt-6" aria-hidden="true"></div>
+
+    </div>
+  </section>
+
+
+  <!-- ============================================================
        BOOKING CTA BAND
   ============================================================ -->
   <section id="cta-band" class="relative py-24 md:py-32 overflow-hidden" aria-label="Book your stay">
@@ -1129,8 +1281,8 @@
         <button
           id="cta-reserve-btn"
           type="button"
-          class="px-8 py-4 rounded-full bg-gold text-white font-semibold text-sm
-                 tracking-wide hover:bg-amber-600 transition-colors duration-200"
+          class="px-8 py-4 rounded-full bg-emerald text-white font-semibold text-sm
+                 tracking-wide hover:bg-emerald/80 transition-colors duration-200"
         >
           Reserve Your Stay
         </button>
@@ -1148,7 +1300,7 @@
 
         <!-- Left — contact details -->
         <div id="contact-left" class="opacity-0">
-          <p class="text-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3">
+          <p class="text-emerald text-xs font-semibold uppercase tracking-[0.2em] mb-3">
             Get in Touch
           </p>
           <h2 class="font-display text-charcoal text-3xl sm:text-4xl lg:text-5xl leading-[1.15] mb-6">
@@ -1195,8 +1347,8 @@
           <!-- Reserve button -->
           <button
             type="button"
-            class="contact-reserve-btn px-7 py-3.5 rounded-full bg-gold text-white font-semibold
-                   text-sm tracking-wide hover:bg-amber-600 transition-colors duration-200"
+            class="contact-reserve-btn px-7 py-3.5 rounded-full bg-emerald text-white font-semibold
+                   text-sm tracking-wide hover:bg-emerald/80 transition-colors duration-200"
           >
             Reserve Your Stay
           </button>
@@ -1234,18 +1386,12 @@
 
         <!-- Col 1 — Brand -->
         <div>
-          <div class="flex items-center gap-2.5 mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
-                 class="w-7 h-7 text-gold" aria-hidden="true" fill="currentColor">
-              <path d="M16 15C16 15 13 9 16 3C19 9 16 15 16 15Z"/>
-              <path d="M16 17C16 17 19 23 16 29C13 23 16 17 16 17Z"/>
-              <path d="M15 16C15 16 9 19 3 16C9 13 15 16 15 16Z"/>
-              <path d="M17 16C17 16 23 13 29 16C23 19 17 16 17 16Z"/>
-              <circle cx="16" cy="16" r="2"/>
-            </svg>
-            <span class="font-display text-white text-lg leading-none">
-              Jeevika <span class="text-gold">Haven</span>
-            </span>
+          <div class="mb-4">
+            <img
+              src="images/jeevika-logo-full.png"
+              alt="Jeevika Haven"
+              class="h-9 w-auto"
+            >
           </div>
           <p class="text-sm leading-relaxed">
             A private pool villa in the green quiet of Kombanad, Ernakulam —
@@ -1259,10 +1405,10 @@
             Quick Links
           </h3>
           <ul class="flex flex-col gap-2.5 list-none m-0 p-0 text-sm">
-            <li><a href="#villa"     class="hover:text-gold transition-colors duration-200">The Villa</a></li>
-            <li><a href="#amenities" class="hover:text-gold transition-colors duration-200">Amenities</a></li>
-            <li><a href="#gallery"   class="hover:text-gold transition-colors duration-200">Gallery</a></li>
-            <li><a href="#nearby"    class="hover:text-gold transition-colors duration-200">Nearby</a></li>
+            <li><a href="#villa"     class="hover:text-emerald transition-colors duration-200">The Villa</a></li>
+            <li><a href="#amenities" class="hover:text-emerald transition-colors duration-200">Amenities</a></li>
+            <li><a href="#gallery"   class="hover:text-emerald transition-colors duration-200">Gallery</a></li>
+            <li><a href="#nearby"    class="hover:text-emerald transition-colors duration-200">Nearby</a></li>
           </ul>
         </div>
 
@@ -1279,13 +1425,13 @@
           <ul class="flex flex-col gap-2 list-none m-0 p-0 text-sm">
             <li>
               <a href="tel:+919447664261"
-                 class="hover:text-gold transition-colors duration-200">
+                 class="hover:text-emerald transition-colors duration-200">
                 Mathew: +91 94476 64261
               </a>
             </li>
             <li>
               <a href="tel:+919778454869"
-                 class="hover:text-gold transition-colors duration-200">
+                 class="hover:text-emerald transition-colors duration-200">
                 Sanjay: +91 97784 54869
               </a>
             </li>
@@ -1319,8 +1465,8 @@
     <button
       type="button"
       id="sticky-reserve-btn"
-      class="w-full py-3.5 rounded-full bg-gold text-white font-semibold text-sm
-             tracking-wide hover:bg-amber-600 transition-colors duration-200"
+      class="w-full py-3.5 rounded-full bg-emerald text-white font-semibold text-sm
+             tracking-wide hover:bg-emerald/80 transition-colors duration-200"
     >
       Reserve Your Stay
     </button>
@@ -1345,20 +1491,12 @@
     <div class="shrink-0 flex items-center justify-between
                 px-6 md:px-12 py-4 border-b border-charcoal/10 bg-ivory">
 
-      <!-- Logo -->
-      <div class="flex items-center gap-2.5">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
-             class="w-7 h-7 text-forest" aria-hidden="true" fill="currentColor">
-          <path d="M16 15C16 15 13 9 16 3C19 9 16 15 16 15Z"/>
-          <path d="M16 17C16 17 19 23 16 29C13 23 16 17 16 17Z"/>
-          <path d="M15 16C15 16 9 19 3 16C9 13 15 16 15 16Z"/>
-          <path d="M17 16C17 16 23 13 29 16C23 19 17 16 17 16Z"/>
-          <circle cx="16" cy="16" r="2"/>
-        </svg>
-        <span class="font-display text-charcoal text-lg leading-none">
-          Jeevika <span class="text-gold">Haven</span>
-        </span>
-      </div>
+      <!-- Logo — same image as navbar -->
+      <img
+        src="images/jeevika-logo-full.png"
+        alt="Jeevika Haven"
+        class="h-9 md:h-10 w-auto max-w-[180px] block"
+      >
 
       <!-- Heading (desktop only, centred) -->
       <h2 id="modal-heading"
@@ -1395,7 +1533,7 @@
 
           <!-- LEFT — Calendar -->
           <div>
-            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gold mb-4">
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-emerald mb-4">
               Select Your Dates
             </p>
             <div id="fp-calendar"></div>
@@ -1447,6 +1585,14 @@
                   aria-label="Increase children">+</button>
               </div>
             </div>
+
+            <!-- Children age inputs — rendered dynamically by JS -->
+            <div id="children-ages-container" class="flex flex-col gap-3"></div>
+
+            <!-- Age selection validation error -->
+            <p id="ages-error" class="hidden text-red-600 text-xs font-medium leading-snug">
+              Please select an age for each child.
+            </p>
 
             <!-- Name -->
             <div class="flex flex-col gap-1.5">
@@ -1504,20 +1650,42 @@
               Please select your dates and fill in your name and phone number.
             </p>
 
+            <!-- API success message -->
+            <p id="modal-success" class="hidden text-emerald text-xs font-medium leading-snug -mt-1">
+              Booking request received successfully. We'll confirm your stay shortly.
+            </p>
+
+            <!-- API error message -->
+            <p id="modal-api-error" class="hidden text-red-600 text-xs font-medium leading-snug -mt-1">
+              We couldn't submit your booking request at the moment. Please try again
+              in a few minutes or contact us directly using the phone number below.
+            </p>
+
             <!-- Submit -->
             <button
               type="button"
               id="modal-submit"
-              class="w-full py-3.5 rounded-full bg-gold text-white font-semibold text-sm
-                     tracking-wide hover:bg-amber-600 transition-colors duration-200"
+              class="w-full py-3.5 rounded-full bg-emerald text-white font-semibold text-sm
+                     tracking-wide hover:bg-emerald/80 transition-colors duration-200
+                     disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Check Availability on WhatsApp
+              <span id="modal-submit-label">Request to Book</span>
+              <!-- Loading spinner — hidden by default -->
+              <svg id="modal-submit-spinner"
+                   class="hidden animate-spin inline-block w-4 h-4 ml-2 -mt-0.5"
+                   xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                   aria-hidden="true">
+                <circle class="opacity-25" cx="12" cy="12" r="10"
+                        stroke="currentColor" stroke-width="4"/>
+                <path class="opacity-75" fill="currentColor"
+                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"/>
+              </svg>
             </button>
 
             <!-- Disclaimer -->
             <p class="text-charcoal/45 text-xs leading-relaxed -mt-1 text-center">
-              No payment is collected here. Availability, pricing and confirmation
-              are handled directly on WhatsApp with the host.
+              No payment is collected here. Our team will contact you to confirm
+              availability and share pricing details.
             </p>
 
           </div><!-- /right col -->
@@ -1587,7 +1755,7 @@
     left: 0;
     width: 100%;
     height: 1.5px;
-    background-color: #C9A15A; /* --color-gold */
+    background-color: #1F6F4F; /* --color-emerald */
     transform: scaleX(0);
     transform-origin: left center;
     transition: transform 0.25s ease;
@@ -1600,6 +1768,11 @@
   /* Smooth scroll */
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Hide native scrollbar on the reviews carousel track */
+  #reviews-track::-webkit-scrollbar {
+    display: none;
   }
 
   /* -------------------------------------------------------
@@ -1718,8 +1891,8 @@
   #booking-modal #fp-calendar .flatpickr-day:hover,
   #booking-modal #fp-calendar .flatpickr-day.prevMonthDay:hover,
   #booking-modal #fp-calendar .flatpickr-day.nextMonthDay:hover {
-    background: #C9A15A !important;
-    border-color: #C9A15A !important;
+    background: #1F6F4F !important;
+    border-color: #1F6F4F !important;
     color: #fff !important;
   }
 
@@ -1745,10 +1918,10 @@
 
   /* Today marker */
   #booking-modal #fp-calendar .flatpickr-day.today {
-    border-color: #C9A15A !important;
+    border-color: #1F6F4F !important;
   }
   #booking-modal #fp-calendar .flatpickr-day.today:hover {
-    background: #C9A15A !important;
+    background: #1F6F4F !important;
     color: #fff !important;
   }
 
@@ -1837,31 +2010,37 @@
 
   /* -------------------------------------------------------
      GALLERY GRID — explicit grid-template-areas
-     4-col × 3-row desktop layout, no auto-placement
+     4-col × 4-row desktop layout, 11 items, no auto-placement
      -------------------------------------------------------
-     Row 1: pool-main  pool-main  pool-night  campfire
-     Row 2: pool-main  pool-main  games       bbq
-     Row 3: private    private    private     breakfast
+     Row 1: pool-main(2w)  pool-night   campfire
+     Row 2: pool-main(2w)  games        bbq
+     Row 3: private(3w)    breakfast
+     Row 4: window-nook    wardrobe     bedroom2    pool-gazebo
   ------------------------------------------------------- */
   @media (min-width: 768px) {
     #gallery-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(3, 240px);
+      grid-template-rows: repeat(4, 240px);
       grid-template-areas:
-        "pool-main pool-main pool-night campfire"
-        "pool-main pool-main games      bbq"
-        "private   private   private    breakfast";
+        "pool-main   pool-main   pool-night  campfire"
+        "pool-main   pool-main   games       bbq"
+        "private     private     private     breakfast"
+        "window-nook wardrobe    bedroom2    pool-gazebo";
       gap: 1rem;
     }
 
-    #gallery-grid .gallery-pool-main  { grid-area: pool-main;  }
-    #gallery-grid .gallery-pool-night { grid-area: pool-night; }
-    #gallery-grid .gallery-campfire   { grid-area: campfire;   }
-    #gallery-grid .gallery-games      { grid-area: games;      }
-    #gallery-grid .gallery-bbq        { grid-area: bbq;        }
-    #gallery-grid .gallery-private    { grid-area: private;    }
-    #gallery-grid .gallery-breakfast  { grid-area: breakfast;  }
+    #gallery-grid .gallery-pool-main     { grid-area: pool-main;    }
+    #gallery-grid .gallery-pool-night    { grid-area: pool-night;   }
+    #gallery-grid .gallery-campfire      { grid-area: campfire;     }
+    #gallery-grid .gallery-games         { grid-area: games;        }
+    #gallery-grid .gallery-bbq           { grid-area: bbq;          }
+    #gallery-grid .gallery-private       { grid-area: private;      }
+    #gallery-grid .gallery-breakfast     { grid-area: breakfast;    }
+    #gallery-grid .gallery-window-nook   { grid-area: window-nook;  }
+    #gallery-grid .gallery-wardrobe-nook { grid-area: wardrobe;     }
+    #gallery-grid .gallery-bedroom-2     { grid-area: bedroom2;     }
+    #gallery-grid .gallery-pool-gazebo   { grid-area: pool-gazebo;  }
   }
 
   /* Mobile: drop back to plain single-column stack */
